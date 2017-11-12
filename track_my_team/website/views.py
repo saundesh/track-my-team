@@ -9,3 +9,9 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, 'website/home.html')
+
+def captain(request):
+    return render(request, 'website/captain.html')
+
+def player(request):
+    return render(request, 'website/player.html')
