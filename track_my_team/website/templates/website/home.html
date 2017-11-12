@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'website/header.html' %}
 
-<head>
-	<title>Track My Team!</title>
-	<meta charset="utf-8" />
-	{% load staticfiles %}
-	<link rel='stylesheet' href=" {% static '/css/bootstrap.min.css' %}" type='text/css'/>
-</head>
+{% block title %} Track My Team! {% endblock %}
 
-<body class="body" style="background-color:#f6f6f6">
-	<div>
-	    <p>Welcome to Track My Team!</p>
-	</div>
-</body>
-
-</html>
+{% block body %}
+<div>
+    <p>Welcome to Track My Team!</p>
+    <button>Captain</button>
+    <button>Player</button>
+</div>
+{% endblock %}

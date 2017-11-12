@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'website/header.html' %}
 
-<head>
-	<title>Team Captain</title>
-	<meta charset="utf-8" />
-	{% load staticfiles %}
-	<link rel='stylesheet' href=" {% static '/css/bootstrap.min.css' %}" type='text/css'/>
-</head>
+{% block title %} Team Captain {% endblock %}
 
-<body class="body" style="background-color:#f6f6f6">
-	<div>
-        <p>Hello team captain!</p>
-	</div>
-</body>
-
-</html>
+{% block body %}
+<p>Hello team captain!</p>
+{% endblock %}
