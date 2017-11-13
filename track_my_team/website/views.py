@@ -21,3 +21,6 @@ def signup(request):
 
 def login(request):
     return render(request, 'website/login.html')
+
+def create_team(request):
+    return render(request, 'website/create-team.html')

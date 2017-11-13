@@ -3,6 +3,8 @@
 {% block title %} Team Captain {% endblock %}
 
 {% block body %}
-<p>Hello team captain!</p>
-<button>Create Team</button>
+<div class="container text-center" style="padding-top: 20px">
+    <p>Welcome Team Captain!</p>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:create-team' %}">Create Team</a>
+</div>
 {% endblock %}
