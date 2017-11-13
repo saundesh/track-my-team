@@ -51,8 +51,16 @@ def player(request):
 
 # Routes to the page for players to view their team profile.
 def team_profile(request):
-    return render(request, 'website/team-profile.html')
+    data = Team.objects.all()
+    all_teams = {
+        "teams": data
+    }
+    return render(request, 'website/team-profile.html', all_teams)
 
 # Routes to the page for players to view their team roster.
 def team_roster(request):
-    return render(request, 'website/team-roster.html')
+    data = Player.objects.all()
+    all_players = {
+        "roster": data
+    }
+    return render(request, 'website/team-roster.html', all_players)
