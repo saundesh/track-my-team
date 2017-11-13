@@ -5,25 +5,26 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Add Player to Roster</p>
-    <form class="create-roster-form">
+    <form action="/captain/create-roster/submit/" method="post">
+        {% csrf_token %}
         <div class="form-group">
             <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" placeholder="First Name" required>
+                <input type="name" class="form-control form-control-sm" id="first_name" placeholder="First Name" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" placeholder="Last Name" required>
+                <input type="name" class="form-control form-control-sm" id="last_name" placeholder="Last Name" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" placeholder="Email">
+                <input type="name" class="form-control form-control-sm" id="email" placeholder="Email">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="tel" class="form-control form-control-sm" placeholder="Phone">
+                <input type="tel" class="form-control form-control-sm" id="phone_number" placeholder="Phone">
             </div>
         </div>    
         <button type="submit" class="btn btn-primary btn-sm">Add Player</button>

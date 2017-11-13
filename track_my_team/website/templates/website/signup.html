@@ -5,20 +5,21 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Register Your Account</p>
-    <form class="signup-form">
+    <form action="/signup/submit/" method="post">
+        {% csrf_token %}
         <div class="form-group">
             <div class="col-sm">
-                <input type="email" class="form-control form-control-sm" placeholder="Email" required>
+                <input type="email" class="form-control form-control-sm" id="email" placeholder="Email" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="password" class="form-control form-control-sm" placeholder="Password" required>
+                <input type="password" class="form-control form-control-sm" id="password" placeholder="Password" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="password" class="form-control form-control-sm" placeholder="Retype Password" required>
+                <input type="password" class="form-control form-control-sm" id="re-password" placeholder="Retype Password" required>
             </div>
         </div>    
         <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>

@@ -6,13 +6,20 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 
+from .forms import UserForm, TeamForm, PlayerForm
+from .models import User, Team, Player
+
 # Routes to the welcome homepage.
 def index(request):
     return render(request, 'website/home.html')
 
 # Routes to the page for users to create an account.
 def signup(request):
-    return render(request, 'website/signup.html')
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'website/signup.html', {'form': UserForm()})
 
 # Routes to the page for users to log into their account.
 def login(request):
@@ -24,11 +31,19 @@ def captain(request):
 
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
-    return render(request, 'website/create-team.html')
+    if request.method == 'POST':
+        form = TeamForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'website/create-team.html', {'form': TeamForm()})
 
 # Routes to the page for team captains to create a team roster.
 def create_roster(request):
-    return render(request, 'website/create-roster.html')
+    if request.method == 'POST':
+        form = PlayerForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'website/create-roster.html', {'form': PlayerForm()})
 
 # Routes to the page for players, he/she can view their team information.
 def player(request):

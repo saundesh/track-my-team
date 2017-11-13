@@ -5,25 +5,26 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Create Team</p>
-    <form class="create-team-form">
+    <form action="/captain/create-team/submit/" method="post">
+        {% csrf_token %}
         <div class="form-group">
             <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" placeholder="Team Name" required>
+                <input type="name" class="form-control form-control-sm" id="team_name" placeholder="Team Name" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" placeholder="Sport" required>
+                <input type="name" class="form-control form-control-sm" id="sport" placeholder="Sport" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" placeholder="Country" required>
+                <input type="name" class="form-control form-control-sm" id="country" placeholder="Country" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="number" class="form-control form-control-sm" placeholder="Zip Code" required>
+                <input type="number" class="form-control form-control-sm" id="zip_code" placeholder="Zip Code" required>
             </div>
         </div>    
         <button type="submit" class="btn btn-primary btn-sm">Create Team</button>
