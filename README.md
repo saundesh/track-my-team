@@ -1,6 +1,6 @@
 # Track My Team!
 
-Track My Team: A web app that will track all sports team events. This web app uses Django as the web framework and Python and Javascript.
+Track My Team: A web app that will track all sports team events. This web app uses Django as the web framework alongside Python and Javascript.
 
 ## Week 1
 
@@ -9,8 +9,8 @@ Track My Team: A web app that will track all sports team events. This web app us
 #### Part 0: Tutorials
 
 Sources I used for learning Django:
-https://pythonprogramming.net/django-web-development-with-python-intro/
-https://docs.djangoproject.com/en/1.11/intro/tutorial01/
+- https://pythonprogramming.net/django-web-development-with-python-intro/
+- https://docs.djangoproject.com/en/1.11/intro/tutorial01/
 
 #### Part 1: Navigation Bar
 
@@ -18,7 +18,7 @@ Create a navigation bar that will appear at the top of every page. This will all
 
 #### Part 2: Signup and Login
 
-Create signup and login forms on individual pages for users to create an account if they do not have one or to access their account if they do have an account. This week, it is okay if there are duplicate users that create an account.
+Create signup and login forms on individual pages for users to create an account if they do not have one or to access their account if they do have an account. It is okay if there are duplicate users that create an account.
 
 #### Part 3: User Interface - Captains and Players
 
@@ -67,6 +67,8 @@ Create a manual test plan for this week. Write a test plan including screenshots
 ## Week 2
 
 ### Requirements
+
+TBD
 
 ### Grading Rubric
 

@@ -2,45 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-	<title>{% block title %} Track My Team! {% endblock %}</title>
-	{% load staticfiles %}
+    <!-- Each page will have a different webpage title. -->
+    <title>{% block title %} Track My Team! {% endblock %}</title>
+    
+    <!-- Load static files -->
+    {% load staticfiles %}
+
+    <!-- Import Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'website/style.css' %}"/> -->
 </head>
 <body class="body" style="background-color:#f6f6f6">
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="{% url 'website:index' %}">Track My Team!</a>
-    <div class="collapse navbar-collapse" id="nav-content">   
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Home
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdown-button">
-                    <a class="dropdown-item" href="{% url 'website:signup' %}">Sign Up</a>
-                    <a class="dropdown-item" href="{% url 'website:login' %}">Log In</a>
-                </div>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="{% url 'website:signup' %}">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'website:login' %}">Log In</a>
-            </li> -->
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'website:captain' %}">Captain</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'website:player' %}">Player</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-{% block body %}
-{% endblock %}
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'website:index' %}">Track My Team!</a>
+        <div class="collapse navbar-collapse" id="nav-content">   
+            <ul class="navbar-nav">
+                <!-- Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Home
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown-button">
+                        <a class="dropdown-item" href="{% url 'website:signup' %}">Sign Up</a>
+                        <a class="dropdown-item" href="{% url 'website:login' %}">Log In</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:captain' %}">Captain</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:player' %}">Player</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Each page will have a different body below the navigation bar. -->
+    {% block body %}
+    {% endblock %}
+
+    <!-- Import Javascripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>

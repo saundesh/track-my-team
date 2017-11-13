@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from . import views
 
+# Create all the routes found in views. Each method in views links to a html template.
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^signup/$', views.signup, name='signup'),
