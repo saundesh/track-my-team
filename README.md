@@ -68,7 +68,25 @@ Create a manual test plan for this week. Write a test plan including screenshots
 
 ### Requirements
 
-TBD
+#### Part 1: User Interface - Captains
+
+Improve the previous week's user interface. Figure out how to submit the forms and send data to database. Also, allow the team captains to be able to edit the team profile and roster. Create a team profile dashboard that will have access to the team roster and event pages.
+
+#### Part 2: Displaying Event Page
+
+Create a calendar or list view of all events happening in the team. The team captain should be able to add/remove and edit all events. Also, make it possible for events to be recurring. When editting recurring events, make sure it can change for just one event.
+
+#### Part 3: Accessing Event Details
+
+When events are clicked, all the details will display including: time and date, location, and event details. Also, import a map to show the location as well as allow for any attachments or notes to be uploaded with the event. For example, the workout of the week or drills worked on at practice.
+
+#### Part 4: Player Profiles
+
+Clicking on a players name in the team roster should open a new page with the player's profile, he/she will be able to edit their information and add an avatar. Also, redesign the team roster current page to be able to switch between a grid view with avatars and a list view.
+
+#### Part 5: Testing
+
+Expand the manual test plan for this week. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe.
 
 ### Grading Rubric
 
@@ -85,11 +103,11 @@ TBD
 | Overall Design | 5 | 0-2.5 | Have nice approaches and structures in overall |
 | Participation | 5 | 0-2.5 | Interact with the group 2 times (ask a question, make a comment, help answer a question, etc.) |
 | Presentation | 4 | 0-2 | Present the code clearly |
-| Requirement - Event Page | 5 | 0-2.5 | 2 points: Basic list or calendar view for all events, user can add/remove, edit and view team events; 2.5 points: Events are clickable to view event page details |
-| Requirement - Recurring | 5 | 0-2.5 | 2 points: Ability to make events recurring; 2.5 points: Ability to make changes to just one event that is recurring |
-| Requirement - Player Profile | 5 | 0-2.5 | 2 points: Names on roster are clickable and have a basic player profile with name, address, phone number; 2.5 points: Player profiles can be editted |
-| Requirement - Useful Tools | 5 | 0-2.5 | 2 points: Include Google Maps and attachments into the event page detail; 2.5 points: Players can also upload an avatar to their profile |
-| Testing | 5 | 0-2.5 | 0 points: No new test plan; 2.5 points: Manual test plan |
+| Requirement - UI | 4 | 0-2 | 1 point: Forms will send to database and team captains can edit team profile and roster; 2 points: Improve team profile view so UI has furnished design |
+| Requirement - Event Page | 6 | 0-3 | 1.5 points: Basic list or calendar view for all events; 3 points: User can add/remove, edit and view team events (includes recurring events) |
+| Requirement - Event Details | 4 | 0-2 | 1 point: Events are clickable to view event page details; 2 points: Include Google Maps and attachments into the event page detail |
+| Requirement - Player Profile | 6 | 0-3 | 2 points: Names on roster are clickable and have a basic player profile with name, address, phone number; 3 points: Player profiles can be editted and upload an avatar to their profile |
+| Testing | 4 | 0-2 | 0 points: No new test plan; 2 points: Manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
