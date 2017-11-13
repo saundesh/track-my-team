@@ -4,6 +4,8 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Welcome to the team, check out the team events!</p>
+    <p>Welcome to the team, check out your team profile!</p>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:team-profile' %}">Team Profile</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' %}">Team Roster</a>
 </div>
 {% endblock %}
