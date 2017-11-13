@@ -6,9 +6,6 @@
 	{% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'website/style.css' %}"/> -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 </head>
 <body class="body" style="background-color:#f6f6f6">
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
@@ -19,7 +16,7 @@
     <div class="collapse navbar-collapse" id="nav-content">   
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Home
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown-button">
@@ -27,12 +24,12 @@
                     <a class="dropdown-item" href="{% url 'website:login' %}">Log In</a>
                 </div>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="{% url 'website:signup' %}">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'website:login' %}">Log In</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'website:captain' %}">Captain</a>
             </li>
@@ -44,5 +41,8 @@
 </nav>
 {% block body %}
 {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 </body>
 </html>
