@@ -6,8 +6,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 
-from .forms import UserForm, TeamForm, PlayerForm
-from .models import User, Team, Player
+from .forms import UserForm, TeamForm, PlayerForm, EventForm
+from .models import User, Team, Player, Event
 
 # Routes to the welcome homepage.
 def index(request):
@@ -45,6 +45,14 @@ def create_roster(request):
             form.save()
     return render(request, 'website/create-roster.html', {'form': PlayerForm()})
 
+# Routes to the page for team captains to create a team roster.
+def create_event(request):
+    if request.method == 'POST':
+        form = PlayerForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'website/create-event.html', {'form': PlayerForm()})
+
 # Routes to the page for players, he/she can view their team information.
 def player(request):
     return render(request, 'website/player.html')
@@ -64,3 +72,7 @@ def team_roster(request):
         "roster": data
     }
     return render(request, 'website/team-roster.html', all_players)
+
+# Routes to the page for players, he/she can view their team events.
+def team_events(request):
+    return render(request, 'website/team-events.html')

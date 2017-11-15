@@ -13,7 +13,10 @@ urlpatterns = [
     url(r'^captain/create-team/submit/$', views.create_team, name='create-team-submit'),
     url(r'^captain/create-roster/$', views.create_roster, name='create-roster'),
     url(r'^captain/create-roster/submit/$', views.create_team, name='create-roster-submit'),
+    url(r'^captain/create-event/$', views.create_event, name='create-event'),
+    url(r'^captain/create-event/submit/$', views.create_event, name='create-event-submit'),
     url(r'^player/$', views.player, name='player'),
     url(r'^player/team/$', views.team_profile, name='team-profile'),
-    url(r'^player/team/roster/$', views.team_roster, name='team-roster')
+    url(r'^player/team/roster/$', views.team_roster, name='team-roster'),
+    url(r'^player/team/events/$', views.team_events, name='team-events')
 ]

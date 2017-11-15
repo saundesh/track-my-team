@@ -32,3 +32,13 @@ class Player(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+# Event model will store player profile information
+class Event(models.Model):
+    event_name = models.CharField(max_length=64)
+    date = models.DateField()
+    time = models.TimeField()
+    location = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.event_name

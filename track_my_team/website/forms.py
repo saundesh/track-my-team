@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import User, Team, Player
+from .models import User, Team, Player, Event
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -19,3 +19,8 @@ class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = ['first_name', 'last_name', 'email', 'phone_number']
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['event_name', 'date', 'time', 'location']

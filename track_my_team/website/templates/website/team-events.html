@@ -1,0 +1,10 @@
+{% extends 'website/header.html' %}
+
+{% block title %} Team Events {% endblock %}
+
+{% block body %}
+<div class="container text-center" style="padding-top: 20px">
+    <p>Team Events</p>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:create-event' %}">Add Event</a>
+</div>
+{% endblock %}

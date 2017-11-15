@@ -1,0 +1,33 @@
+{% extends 'website/header.html' %}
+
+{% block title %} Create Event {% endblock %}
+
+{% block body %}
+<div class="container text-center" style="padding-top: 20px">
+    <p>Add Event to Calendar</p>
+    <form action="/captain/create-event/submit/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="col-sm">
+                <input type="name" class="form-control form-control-sm" id="event_name" placeholder="Event Name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm">
+                <input type="date" class="form-control form-control-sm" id="date" placeholder="Date" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm">
+                <input type="time" class="form-control form-control-sm" id="time" placeholder="Time">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm">
+                <input type="name" class="form-control form-control-sm" id="location" placeholder="Location">
+            </div>
+        </div>    
+        <button type="submit" class="btn btn-primary btn-sm">Add Event</button>
+    </form>
+</div>
+{% endblock %}
