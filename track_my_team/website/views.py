@@ -74,5 +74,9 @@ def team_roster(request):
     return render(request, 'website/team-roster.html', all_players)
 
 # Routes to the page for players, he/she can view their team events.
-def team_events(request):
-    return render(request, 'website/team-events.html')
+def team_event(request):
+    data = Event.objects.all()
+    all_events = {
+        "events": data
+    }
+    return render(request, 'website/team-event.html', all_events)
