@@ -107,7 +107,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Requirement - Event Page | 6 | 0-3 | 1.5 points: Basic list or calendar view for all events; 3 points: User can add/remove, edit and view team events (includes recurring events) |
 | Requirement - Event Details | 4 | 0-2 | 1 point: Events are clickable to view event page details; 2 points: Include Google Maps and attachments into the event page detail |
 | Requirement - Player Profile | 6 | 0-3 | 2 points: Names on roster are clickable and have a basic player profile with name, address, phone number; 3 points: Player profiles can be editted and upload an avatar to their profile |
-| Testing | 4 | 0-2 | 0 points: No new test plan; 2 points: Manual test plan |
+| Testing | 5 | 0-2.5 | 0 points: No new test plan; 2.5 points: Manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
