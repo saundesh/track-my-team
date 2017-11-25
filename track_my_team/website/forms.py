@@ -8,12 +8,10 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['email', 'password']
 
-
 class TeamForm(forms.ModelForm):
     class Meta:
         model = Team
-        fields = ['team_name', 'sport', 'country', 'zip_code']
-
+        fields = ['team_name', 'sport', 'state', 'city']
 
 class PlayerForm(forms.ModelForm):
     class Meta:

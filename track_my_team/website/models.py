@@ -17,14 +17,15 @@ class User(models.Model):
 class Team(models.Model):
     team_name = models.CharField(max_length=64)
     sport = models.CharField(max_length=64)
-    country = models.CharField(max_length=64)
-    zip_code = models.IntegerField()
+    state = models.CharField(max_length=64)
+    city = models.CharField(max_length=64)
 
     def __str__(self):
         return self.team_name
 
 # Player model will store player profile information
 class Player(models.Model):
+    # team = models.ForeignKey(Team, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     email = models.CharField(max_length=64)
@@ -35,6 +36,7 @@ class Player(models.Model):
 
 # Event model will store player profile information
 class Event(models.Model):
+    # team = models.ForeignKey(Team, on_delete=models.CASCADE)
     event_name = models.CharField(max_length=64)
     date = models.DateField()
     time = models.TimeField()

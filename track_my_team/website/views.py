@@ -32,6 +32,7 @@ def captain(request):
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
     if request.method == 'POST':
+        print("hello")
         form = TeamForm(request.POST)
         if form.is_valid():
             form.save()
