@@ -6,19 +6,19 @@ from .models import User, Team, Player, Event
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['email', 'password']
+        fields = '__all__'
 
 class TeamForm(forms.ModelForm):
     class Meta:
         model = Team
-        fields = ['team_name', 'sport', 'state', 'city']
+        fields = '__all__'
 
 class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = '__all__'
 
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['event_name', 'date', 'time', 'location']
+        fields = '__all__'

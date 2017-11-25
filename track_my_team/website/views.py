@@ -50,21 +50,22 @@ def create_roster(request):
 # Routes to the page for team captains to create a team roster.
 def create_event(request):
     if request.method == 'POST':
-        form = PlayerForm(request.POST)
+        form = EventForm(request.POST)
         if form.is_valid():
             form.save()
-    return render(request, 'website/create-event.html', {'form': PlayerForm()})
+    return render(request, 'website/create-event.html', {'form': EventForm()})
 
 # Routes to the page for players, he/she can view their team information.
 def player(request):
     return render(request, 'website/player.html')
 
-# Routes to the page for players to view their team profile.
+# Routes to the page for players to view a list of their teams.
 def team_list(request):
     teams = Team.objects.all()
     all_teams = { "teams": teams }
     return render(request, 'website/team-list.html', all_teams)
 
+# Routes to the page for players to view each team profile.
 def team_profile(request, team_id):
     try:
         team = Team.objects.get(pk=team_id)
@@ -72,12 +73,13 @@ def team_profile(request, team_id):
         raise Http404("Team does not exist")
     return render(request, 'website/team-profile.html', { "team": team })
 
-# Routes to the page for players to view their team roster.
+# Routes to the page for players to view their team rosters.
 def team_roster(request):
     players = Player.objects.all()
     all_players = { "roster": players }
     return render(request, 'website/team-roster.html', all_players)
 
+# Routes to the page for players to view each player profile.
 def player_profile(request, player_id):
     try:
         player = Player.objects.get(pk=player_id)

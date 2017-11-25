@@ -5,9 +5,17 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Add Player to Roster</p>
-    <form action="/captain/create-roster/" method="post">
+    <form action="" method="post">
         {% csrf_token %}
-        <div class="form-group">
+        {% for field in form %}
+            <div class="form-group">
+                <div class="col-sm">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            </div>
+        {% endfor %}
+        <!-- <div class="form-group">
             <div class="col-sm">
                 <input type="name" class="form-control form-control-sm" id="first_name" placeholder="First Name" required>
             </div>
@@ -26,7 +34,7 @@
             <div class="col-sm">
                 <input type="tel" class="form-control form-control-sm" id="phone_number" placeholder="Phone">
             </div>
-        </div>    
+        </div>     -->
         <button type="submit" class="btn btn-primary btn-sm">Add Player</button>
     </form>
 </div>
