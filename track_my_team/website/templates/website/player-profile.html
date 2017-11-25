@@ -1,0 +1,12 @@
+{% extends 'website/header.html' %}
+
+{% block title %} Player Profile {% endblock %}
+
+{% block body %}
+<div class="container text-center" style="padding-top: 20px">
+    <p>Player Profile</p>
+    {{ player }} <br>
+    {{ player.email }} <br>
+    {{ player.phone_number }} <br>
+</div>
+{% endblock %}

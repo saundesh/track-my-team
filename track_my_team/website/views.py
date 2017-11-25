@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-
 # Create your views here.
 from django.http import HttpResponse
+from django.http import Http404
+from django.shortcuts import render
 
 from .forms import UserForm, TeamForm, PlayerForm, EventForm
 from .models import User, Team, Player, Event
@@ -35,6 +35,7 @@ def create_team(request):
         print("hello")
         form = TeamForm(request.POST)
         if form.is_valid():
+            print("world")
             form.save()
     return render(request, 'website/create-team.html', {'form': TeamForm()})
 
@@ -59,31 +60,33 @@ def player(request):
     return render(request, 'website/player.html')
 
 # Routes to the page for players to view their team profile.
-def team_profile(request):
-    data = Team.objects.all()
-    all_teams = {
-        "teams": data
-    }
-    return render(request, 'website/team-profile.html', all_teams)
+def team_list(request):
+    teams = Team.objects.all()
+    all_teams = { "teams": teams }
+    return render(request, 'website/team-list.html', all_teams)
 
-def detail(request, team_id):
-    return HttpResponse("<h2>Details for Team ID: " + str(team_id) + "</h2>")
-
-def player_detail(request, player_id):
-    return HttpResponse("<h2>Details for Player ID: " + str(player_id) + "</h2>")
+def team_profile(request, team_id):
+    try:
+        team = Team.objects.get(pk=team_id)
+    except Team.DoesNotExist:
+        raise Http404("Team does not exist")
+    return render(request, 'website/team-profile.html', { "team": team })
 
 # Routes to the page for players to view their team roster.
 def team_roster(request):
-    data = Player.objects.all()
-    all_players = {
-        "roster": data
-    }
+    players = Player.objects.all()
+    all_players = { "roster": players }
     return render(request, 'website/team-roster.html', all_players)
+
+def player_profile(request, player_id):
+    try:
+        player = Player.objects.get(pk=player_id)
+    except Player.DoesNotExist:
+        raise Http404("Player does not exist")
+    return render(request, 'website/player-profile.html', { "player": player })
 
 # Routes to the page for players, he/she can view their team events.
 def team_event(request):
-    data = Event.objects.all()
-    all_events = {
-        "events": data
-    }
+    events = Event.objects.all()
+    all_events = { "events": events }
     return render(request, 'website/team-event.html', all_events)

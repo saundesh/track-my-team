@@ -1,0 +1,15 @@
+{% extends 'website/header.html' %}
+
+{% block title %} Teams {% endblock %}
+
+{% block body %}
+<div class="container text-center" style="padding-top: 20px">
+    <p>Your Teams</p>
+    {% for team in teams %}
+        <a href="/player/teams/{{ team.id }}">{{ team.team_name }}</a><br>
+        <!-- {{ team.team_name }}<br>
+        {{ team.sport }}<br>
+        {{ team.city }}, {{ team.state }}<br><br> -->
+    {% endfor %}
+</div>
+{% endblock %}

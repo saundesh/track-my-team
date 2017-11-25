@@ -5,11 +5,8 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Team Profile</p>
-    {% for team in teams %}
-        <a href="/player/teams/{{ team.id }}">{{ team.team_name }}</a><br>
-        <!-- {{ team.team_name }}<br>
-        {{ team.sport }}<br>
-        {{ team.city }}, {{ team.state }}<br><br> -->
-    {% endfor %}
+    {{ team }} <br>
+    {{ team.sport }} <br>
+    {{ team.city }}, {{ team.state }}
 </div>
 {% endblock %}
