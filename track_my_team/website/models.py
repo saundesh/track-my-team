@@ -25,7 +25,7 @@ class Team(models.Model):
 
 # Player model will store player profile information
 class Player(models.Model):
-    # team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     email = models.CharField(max_length=64)
@@ -36,7 +36,7 @@ class Player(models.Model):
 
 # Event model will store player profile information
 class Event(models.Model):
-    # team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     event_name = models.CharField(max_length=64)
     date = models.DateField()
     time = models.TimeField()

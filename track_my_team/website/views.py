@@ -66,6 +66,12 @@ def team_profile(request):
     }
     return render(request, 'website/team-profile.html', all_teams)
 
+def detail(request, team_id):
+    return HttpResponse("<h2>Details for Team ID: " + str(team_id) + "</h2>")
+
+def player_detail(request, player_id):
+    return HttpResponse("<h2>Details for Player ID: " + str(player_id) + "</h2>")
+
 # Routes to the page for players to view their team roster.
 def team_roster(request):
     data = Player.objects.all()

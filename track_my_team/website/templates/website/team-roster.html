@@ -6,11 +6,13 @@
 <div class="container text-center" style="padding-top: 20px">
     <p>Team Roster</p>
     {% for player in roster %}
-        {{ player.first_name }}
+        <a href="/player/teams/roster/{{ player.id}}">{{ player.first_name }} {{ player.last_name }}</a><br>
+        <!-- {{ player.first_name }}
         {{ player.last_name }}<br>
         {{ player.email }}<br>
-        {{ player.phone_number }}<br><br>
+        {{ player.phone_number }}<br><br> -->
     {% endfor %}
+    <br>
     <a class="btn btn-primary btn-sm" href="{% url 'website:create-roster' %}">Add Player</a>
 </div>
 {% endblock %}

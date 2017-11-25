@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^captain/create-event/submit/$', views.create_event, name='create-event-submit'),
     url(r'^player/$', views.player, name='player'),
     url(r'^player/teams/$', views.team_profile, name='team-profile'),
+    url(r'^player/teams/(?P<team_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^player/teams/roster/$', views.team_roster, name='team-roster'),
+    url(r'^player/teams/roster/(?P<player_id>[0-9]+)/$', views.player_detail, name='player-detail'),
     url(r'^player/teams/events/$', views.team_event, name='team-events')
 ]
