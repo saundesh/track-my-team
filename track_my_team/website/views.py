@@ -32,17 +32,15 @@ def captain(request):
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
     if request.method == 'POST':
-        print("hello")
-        form = TeamForm(request.POST)
+        form = TeamForm(request.POST, request.FILES)
         if form.is_valid():
-            print("world")
             form.save()
     return render(request, 'website/create-team.html', {'form': TeamForm()})
 
 # Routes to the page for team captains to create a team roster.
 def create_roster(request):
     if request.method == 'POST':
-        form = PlayerForm(request.POST)
+        form = PlayerForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
     return render(request, 'website/create-roster.html', {'form': PlayerForm()})

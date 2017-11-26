@@ -5,8 +5,13 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Player Profile</p>
+    <img src="{{ player.avatar.url }}" width=200 height=200 /><br><br>
     {{ player }} <br>
+    #{{ player.number }} <br>
     {{ player.email }} <br>
     {{ player.phone_number }} <br>
+    {{ player.address }} <br>
+    {{ player.uin }} <br>
+    {{ player.usau_id }} <br>
 </div>
 {% endblock %}

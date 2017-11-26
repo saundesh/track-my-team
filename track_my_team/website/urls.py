@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 
 from . import views
 
@@ -18,4 +20,4 @@ urlpatterns = [
     url(r'^player/teams/roster/$', views.team_roster, name='team-roster'),
     url(r'^player/teams/roster/(?P<player_id>[0-9]+)/$', views.player_profile, name='player-profile'),
     url(r'^player/teams/events/$', views.team_event, name='team-events')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

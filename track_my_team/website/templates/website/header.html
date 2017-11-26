@@ -30,11 +30,21 @@
                         <a class="dropdown-item" href="{% url 'website:login' %}">Log In</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website:captain' %}">Captain</a>
-                </li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdown-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Captain
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-button">
+                            <a class="dropdown-item" href="{% url 'website:create-team' %}">Create Team</a>
+                            <a class="dropdown-item" href="{% url 'website:create-roster' %}">Create Roster</a>
+                            <a class="dropdown-item" href="{% url 'website:create-event' %}">Create Event</a>
+                        </div>
+                    </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'website:player' %}">Player</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:team-list' %}">Team</a>
                 </li>
             </ul>
         </div>
