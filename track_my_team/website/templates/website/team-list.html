@@ -8,9 +8,9 @@
     <div class="container">
         <div class="row">
             {% for team in teams %}
-                <div class="col" style="padding-bottom: 10px">
-                    <img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px" /><br>
-                    <a href="/player/teams/{{ team.id }}">{{ team.team_name }}</a>
+                <div class="col" style="padding-bottom: 20px">
+                    <a href="/player/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px" /></a><br>
+                    {{ team.team_name }}
                 </div>
             {% endfor %}
         </div>
