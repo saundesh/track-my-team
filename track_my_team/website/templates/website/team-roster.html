@@ -5,13 +5,18 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Team Roster</p>
-    {% for player in roster %}
-        <a href="/player/teams/roster/{{ player.id}}">{{ player.first_name }} {{ player.last_name }}</a><br>
-        <!-- {{ player.first_name }}
-        {{ player.last_name }}<br>
-        {{ player.email }}<br>
-        {{ player.phone_number }}<br><br> -->
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            {% for player in roster %}
+                <div class="col" style="padding-bottom: 10px">
+                    <img src="{{ player.avatar.url }}" width=200 height=200 style="padding: 5px" /><br>
+                    <a href="/player/teams/roster/{{ player.id }}">{{ player.first_name }} {{ player.last_name }}</a><br>
+                    #{{ player.number }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
     <br>
     <a class="btn btn-primary btn-sm" href="{% url 'website:create-roster' %}">Add Player</a>
 </div>

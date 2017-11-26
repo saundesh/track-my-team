@@ -5,11 +5,15 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <p>Your Teams</p>
-    {% for team in teams %}
-        <a href="/player/teams/{{ team.id }}">{{ team.team_name }}</a><br>
-        <!-- {{ team.team_name }}<br>
-        {{ team.sport }}<br>
-        {{ team.city }}, {{ team.state }}<br><br> -->
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            {% for team in teams %}
+                <div class="col" style="padding-bottom: 10px">
+                    <img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px" /><br>
+                    <a href="/player/teams/{{ team.id }}">{{ team.team_name }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
