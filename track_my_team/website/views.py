@@ -3,8 +3,7 @@ from __future__ import unicode_literals
 
 # Create your views here.
 from django.http import HttpResponse
-from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .forms import UserForm, TeamForm, PlayerForm, EventForm
 from .models import User, Team, Player, Event
@@ -65,36 +64,31 @@ def team_list(request):
 
 # Routes to the page for players to view each team profile.
 def team_profile(request, team_id):
-    try:
-        team = Team.objects.get(pk=team_id)
-    except Team.DoesNotExist:
-        raise Http404("Team does not exist")
+    team = get_object_or_404(Team, pk=team_id)
     return render(request, 'website/team-profile.html', { "team": team })
 
 # Routes to the page for players to view their team rosters.
-def team_roster(request):
-    players = Player.objects.all()
+def team_roster(request, team_id):
+    team = get_object_or_404(Team, pk=team_id)
+    players = Player.objects.filter(team=team_id)
     all_players = { "roster": players }
     return render(request, 'website/team-roster.html', all_players)
 
 # Routes to the page for players to view each player profile.
-def player_profile(request, player_id):
-    try:
-        player = Player.objects.get(pk=player_id)
-    except Player.DoesNotExist:
-        raise Http404("Player does not exist")
+def player_profile(request, team_id, player_id):
+    team = get_object_or_404(Team, pk=team_id)
+    player = get_object_or_404(Player, pk=player_id)
     return render(request, 'website/player-profile.html', { "player": player })
 
 # Routes to the page for players, he/she can view their team events.
-def team_event(request):
-    events = Event.objects.all()
+def team_event(request, team_id):
+    team = get_object_or_404(Team, pk=team_id)
+    events = Event.objects.filter(team=team_id)
     all_events = { "events": events }
     return render(request, 'website/team-event.html', all_events)
 
 # Routes to the page for players, he/she can view details for each team event.
-def event_details(request, event_id):
-    try:
-        event = Event.objects.get(pk=event_id)
-    except Event.DoesNotExist:
-        raise Http404("Event does not exist")
+def event_details(request, team_id, event_id):
+    team = get_object_or_404(Team, pk=team_id)
+    event = get_object_or_404(Event, pk=event_id)
     return render(request, 'website/event-details.html', { "event": event })

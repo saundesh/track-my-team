@@ -6,6 +6,16 @@ from .models import User, Team, Player, Event
 
 # Register your models here.
 admin.site.register(User)
-admin.site.register(Team)
+
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('team_name', 'sport')
+admin.site.register(Team, TeamAdmin)
+
+# class PlayerAdmin(admin.ModelAdmin):
+#     list_display = ('number', 'first_name', 'last_name, 'team')
+# admin.site.register(Player, PlayerAdmin)
 admin.site.register(Player)
-admin.site.register(Event)
+
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('date', 'event_name', 'team')
+admin.site.register(Event, EventAdmin)

@@ -10,7 +10,7 @@
     {{ team.sport }} <br>
     {{ team.city }}, {{ team.state }} <br><br>
 
-    <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' %}">Roster</a>
-    <a class="btn btn-primary btn-sm" href="{% url 'website:team-events' %}">Events</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' team.id %}">Roster</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:team-events' team.id %}">Events</a>
 </div>
 {% endblock %}
