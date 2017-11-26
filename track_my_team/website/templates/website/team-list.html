@@ -6,12 +6,16 @@
 <div class="container text-center" style="padding-top: 20px">
     <p>Your Teams</p>
     <div class="container">
-        <div class="row">
+        <div class="row" style="height: 275px; width: 700px; margin-left: auto; margin-right: auto">
             {% for team in teams %}
-                <div class="col" style="padding-bottom: 20px">
+                <div class="col">
                     <a href="/player/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px" /></a><br>
                     {{ team.team_name }}
                 </div>
+                {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                    </div>
+                    <div class="row" style="height: 275px; width: 700px; margin-left: auto; margin-right: auto">
+                {% endif %}
             {% endfor %}
         </div>
     </div>
