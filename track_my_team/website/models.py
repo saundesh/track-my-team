@@ -30,12 +30,12 @@ class Player(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     first_name = models.CharField(verbose_name="First Name", max_length=64)
     last_name = models.CharField(verbose_name="Last Name", max_length=64)
-    number = models.IntegerField(validators=[MaxLengthValidator(2)], null=True, blank=True)
+    number = models.IntegerField(null=True, blank=True)
     email = models.CharField(max_length=64, blank=True)
-    phone_number = models.IntegerField(verbose_name="Phone Number", validators=[MaxLengthValidator(10),MinLengthValidator(10)], null=True, blank=True)
+    phone_number = models.IntegerField(verbose_name="Phone Number", null=True, blank=True)
     address = models.CharField(max_length=128, blank=True)
-    uin = models.IntegerField(verbose_name="UIN", validators=[MaxLengthValidator(9),MinLengthValidator(9)], null=True, blank=True)
-    usau_id = models.IntegerField(verbose_name="USAU ID", validators=[MaxLengthValidator(6),MinLengthValidator(6)], null=True, blank=True)
+    uin = models.IntegerField(verbose_name="UIN", null=True, blank=True)
+    usau_id = models.IntegerField(verbose_name="USAU ID", null=True, blank=True)
     avatar = models.FileField(default='default.png')
 
     def __str__(self):

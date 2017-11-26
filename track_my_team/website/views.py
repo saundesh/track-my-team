@@ -70,7 +70,7 @@ def team_profile(request, team_id):
 # Routes to the page for players to view their team rosters.
 def team_roster(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
-    players = Player.objects.filter(team=team_id)
+    players = Player.objects.filter(team=team_id).order_by('number')
     all_players = { "roster": players }
     return render(request, 'website/team-roster.html', all_players)
 
@@ -83,7 +83,7 @@ def player_profile(request, team_id, player_id):
 # Routes to the page for players, he/she can view their team events.
 def team_event(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
-    events = Event.objects.filter(team=team_id)
+    events = Event.objects.filter(team=team_id).order_by('date')
     all_events = { "events": events }
     return render(request, 'website/team-event.html', all_events)
 
