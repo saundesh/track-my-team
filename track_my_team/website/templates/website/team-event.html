@@ -6,11 +6,13 @@
 <div class="container text-center" style="padding-top: 20px">
     <p>Team Events</p>
     {% for event in events %}
-        {{ event.event_name }}<br>
+        <a href="/player/teams/events/{{ event.id }}">{{ event.event_name }}</a><br>
+        <!-- {{ event.event_name }}<br>
         {{ event.date }}<br>
         {{ event.time }}<br>
-        {{ event.location }}<br><br>
+        {{ event.location }}<br><br> -->
     {% endfor %}
+    <br>
     <a class="btn btn-primary btn-sm" href="{% url 'website:create-event' %}">Add Event</a>
 </div>
 {% endblock %}

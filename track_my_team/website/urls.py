@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^player/teams/(?P<team_id>[0-9]+)/$', views.team_profile, name='team-profile'),
     url(r'^player/teams/roster/$', views.team_roster, name='team-roster'),
     url(r'^player/teams/roster/(?P<player_id>[0-9]+)/$', views.player_profile, name='player-profile'),
-    url(r'^player/teams/events/$', views.team_event, name='team-events')
+    url(r'^player/teams/events/$', views.team_event, name='team-events'),
+    url(r'^player/teams/events/(?P<event_id>[0-9]+)/$', views.event_details, name='event-details')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

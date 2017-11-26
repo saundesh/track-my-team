@@ -2,9 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.core.files.storage import FileSystemStorage
-
-fs = FileSystemStorage(location='media/')
 
 # Create your models here.
 
@@ -18,11 +15,11 @@ class User(models.Model):
 
 # Team model will store team profile information
 class Team(models.Model):
-    team_name = models.CharField(max_length=64)
+    team_name = models.CharField(verbose_name="Team Name", max_length=64)
     sport = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
-    avatar = models.FileField(storage=fs, upload_to='media/', default='default.png')
+    avatar = models.FileField(default='default.png')
 
     def __str__(self):
         return self.team_name
@@ -30,15 +27,15 @@ class Team(models.Model):
 # Player model will store player profile information
 class Player(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=64)
-    last_name = models.CharField(max_length=64)
+    first_name = models.CharField(verbose_name="First Name", max_length=64)
+    last_name = models.CharField(verbose_name="Last Name", max_length=64)
     number = models.IntegerField(null=True, blank=True)
     email = models.CharField(max_length=64, blank=True)
-    phone_number = models.IntegerField(null=True, blank=True)
+    phone_number = models.IntegerField(verbose_name="Phone Number", null=True, blank=True)
     address = models.CharField(max_length=128, blank=True)
-    uin = models.IntegerField(null=True, blank=True)
-    usau_id = models.IntegerField(null=True, blank=True)
-    avatar = models.FileField(storage=fs, upload_to='media/', default='default.png')
+    uin = models.IntegerField(verbose_name="UIN", null=True, blank=True)
+    usau_id = models.IntegerField(verbose_name="USAU ID", null=True, blank=True)
+    avatar = models.FileField(default='default.png')
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -46,7 +43,7 @@ class Player(models.Model):
 # Event model will store player profile information
 class Event(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    event_name = models.CharField(max_length=64)
+    event_name = models.CharField(verbose_name="Event Name", max_length=64)
     date = models.DateField(null=True)
     time = models.TimeField(null=True)
     location = models.CharField(max_length=64)

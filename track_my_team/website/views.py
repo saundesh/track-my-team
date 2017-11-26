@@ -90,3 +90,11 @@ def team_event(request):
     events = Event.objects.all()
     all_events = { "events": events }
     return render(request, 'website/team-event.html', all_events)
+
+# Routes to the page for players, he/she can view details for each team event.
+def event_details(request, event_id):
+    try:
+        event = Event.objects.get(pk=event_id)
+    except Event.DoesNotExist:
+        raise Http404("Event does not exist")
+    return render(request, 'website/event-details.html', { "event": event })

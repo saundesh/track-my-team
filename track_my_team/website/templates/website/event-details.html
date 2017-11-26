@@ -1,0 +1,13 @@
+{% extends 'website/header.html' %}
+
+{% block title %} Event Details {% endblock %}
+
+{% block body %}
+<div class="container text-center" style="padding-top: 20px">
+    <p>Event Details</p>
+    {{ event }} <br>
+    {{ event.date }} <br>
+    {{ event.time }} <br>
+    {{ event.location }} <br>
+</div>
+{% endblock %}

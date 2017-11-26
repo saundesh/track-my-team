@@ -7,11 +7,23 @@
     <p>Player Profile</p>
     <img src="{{ player.avatar.url }}" width=200 height=200 /><br><br>
     {{ player }} <br>
-    #{{ player.number }} <br>
-    {{ player.email }} <br>
-    {{ player.phone_number }} <br>
-    {{ player.address }} <br>
-    {{ player.uin }} <br>
-    {{ player.usau_id }} <br>
+    {% if player.number %}
+        #{{ player.number }} <br>
+    {% endif %}
+    {% if player.email %}
+        {{ player.email }} <br>
+    {% endif %}
+    {% if player.phone_number %}
+        {{ player.phone_number }} <br>
+    {% endif %}
+    {% if player.address %}
+        {{ player.address }} <br>
+    {% endif %}
+    {% if player.uin %}
+        {{ player.uin }} <br>
+    {% endif %}
+    {% if player.usau_id %}
+        {{ player.usau_id }} <br>
+    {% endif %}
 </div>
 {% endblock %}
