@@ -7,6 +7,14 @@
     <p>Team Events</p>
     {% for event in events %}
         <a href="/player/teams/{{ event.team.id }}/events/{{ event.id }}">{{ event.event_name }}</a><br>
+        <div style="padding-top: 5px"></div>
+        <form action="{% url 'website:delete-event' event.team.id event.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="event_id" value="{{ event.id }}" />
+            <button type="submit" class="btn btn-outline-primary btn-sm" style="border-radius: 15px">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+        </form>
     {% endfor %}
     <br>
     <a class="btn btn-primary btn-sm" href="{% url 'website:create-event' %}">Add Event</a>

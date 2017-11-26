@@ -105,3 +105,10 @@ def event_details(request, team_id, event_id):
     team = get_object_or_404(Team, pk=team_id)
     event = get_object_or_404(Event, pk=event_id)
     return render(request, 'website/event-details.html', { "event": event })
+
+def delete_event(request, team_id, event_id):
+    team = get_object_or_404(Team, pk=team_id)
+    event = Event.objects.get(pk=event_id)
+    event.delete()
+    events = Event.objects.filter(team=team_id).order_by('date')
+    return render(request, 'website/team-event.html', { "events": events })

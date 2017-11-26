@@ -7,9 +7,9 @@
     <p>Team Profile</p>
     <img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px"/><br>
     {{ team }} <br>
-    {{ team.city }}, {{ team.state }} <br><br>
+    {{ team.city }}, {{ team.state }}
 
-    <div class="container" style="padding: 0px 0px 0px 0px">
+    <div class="container" style="padding: 20px 0px 100px 0px">
         <a href="https://www.facebook.com/IllinoisMenace/" style="text-decoration: none">
             <span class="fa-stack fa-sm">
                 <i class="fa fa-circle fa-stack-2x" style="color:#017bff"></i>
@@ -35,10 +35,19 @@
             </span>
         </a>
     </div>
-    
-    <br><br>
 
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' team.id %}">Roster</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-events' team.id %}">Events</a>
+    <div class="container" style="padding: 10px 0px 0px 0px">
+        <form action="{% url 'website:index' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary btn-sm" style="border-radius: 15px">
+                <i class="fa fa-upload" aria-hidden="true"></i>
+            </button>
+            <button type="submit" class="btn btn-outline-primary btn-sm" style="border-radius: 15px">
+                <i class="fa fa-gear" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}
