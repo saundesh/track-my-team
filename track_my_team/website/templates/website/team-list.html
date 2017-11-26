@@ -12,6 +12,14 @@
                 <div class="col">
                     <a href="/player/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px" /></a><br>
                     {{ team.team_name }}
+                    <div style="padding-top: 5px"></div>
+                    <form action="{% url 'website:delete-team' team.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="team_id" value="{{ team.id }}" />
+                        <button type="submit" class="btn btn-outline-primary btn-sm" style="border-radius: 15px">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </form>
                 </div>
                 {% if forloop.counter|divisibleby:"3" and not forloop.last %}
                     </div>

@@ -12,7 +12,7 @@ class TeamAdmin(admin.ModelAdmin):
 admin.site.register(Team, TeamAdmin)
 
 # class PlayerAdmin(admin.ModelAdmin):
-#     list_display = ('number', 'first_name', 'last_name, 'team')
+#     list_display = ('number', 'first_name', 'last_name', 'team')
 # admin.site.register(Player, PlayerAdmin)
 admin.site.register(Player)
 

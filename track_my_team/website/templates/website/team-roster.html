@@ -11,8 +11,15 @@
             {% for player in roster %}
                 <div class="col">
                     <a href="/player/teams/{{ player.team.id }}/roster/{{ player.id }}"><img src="{{ player.avatar.url }}" width=200 height=200 style="padding: 5px" /></a><br>
-                    {{ player.first_name }} {{ player.last_name }}<br>
-                    #{{ player.number }}
+                    #{{ player.number }} {{ player.first_name }} {{ player.last_name }}
+                    <div style="padding-top: 5px"></div>
+                    <form action="{% url 'website:delete-player' player.team.id player.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="player_id" value="{{ player.id }}" />
+                        <button type="submit" class="btn btn-outline-primary btn-sm" style="border-radius: 15px">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </form>
                 </div>
                 {% if forloop.counter|divisibleby:"3" and not forloop.last %}
                     </div>

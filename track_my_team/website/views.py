@@ -67,6 +67,12 @@ def team_profile(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
     return render(request, 'website/team-profile.html', { "team": team })
 
+def delete_team(request, team_id):
+    team = Team.objects.get(pk=team_id)
+    team.delete()
+    teams = Team.objects.all()
+    return render(request, 'website/team-list.html', { "teams": teams })
+
 # Routes to the page for players to view their team rosters.
 def team_roster(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
@@ -79,6 +85,13 @@ def player_profile(request, team_id, player_id):
     team = get_object_or_404(Team, pk=team_id)
     player = get_object_or_404(Player, pk=player_id)
     return render(request, 'website/player-profile.html', { "player": player })
+
+def delete_player(request, team_id, player_id):
+    team = get_object_or_404(Team, pk=team_id)
+    player = Player.objects.get(pk=player_id)
+    player.delete()
+    players = Player.objects.filter(team=team_id).order_by('number')
+    return render(request, 'website/team-roster.html', { "roster": players })
 
 # Routes to the page for players, he/she can view their team events.
 def team_event(request, team_id):

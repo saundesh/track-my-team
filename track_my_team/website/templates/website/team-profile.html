@@ -9,6 +9,35 @@
     {{ team }} <br>
     {{ team.city }}, {{ team.state }} <br><br>
 
+    <div class="container" style="padding: 0px 0px 0px 0px">
+        <a href="https://www.facebook.com/IllinoisMenace/" style="text-decoration: none">
+            <span class="fa-stack fa-sm">
+                <i class="fa fa-circle fa-stack-2x" style="color:#017bff"></i>
+                <i class="fa fa-facebook fa-stack-1x" style="color:#ffffff"></i>
+            </span>
+        </a>
+        <a href="https://twitter.com/IllinoisMenaceU" style="text-decoration: none">
+            <span class="fa-stack fa-sm">
+                <i class="fa fa-circle fa-stack-2x" style="color:#017bff"></i>
+                <i class="fa fa-twitter fa-stack-1x" style="color:#ffffff"></i>
+            </span>
+        </a>
+        <a href="https://www.instagram.com/illinoismenace/" style="text-decoration: none">
+            <span class="fa-stack fa-sm">
+                <i class="fa fa-circle fa-stack-2x" style="color:#017bff"></i>
+                <i class="fa fa-instagram fa-stack-1x" style="color:#ffffff"></i>
+            </span>
+        </a>
+        <a href="https://www.snapchat.com/add/illinoismenace" style="text-decoration: none">
+            <span class="fa-stack fa-sm">
+                <i class="fa fa-circle fa-stack-2x" style="color:#017bff"></i>
+                <i class="fa fa-snapchat-ghost fa-stack-1x" style="color:#ffffff"></i>
+            </span>
+        </a>
+    </div>
+    
+    <br><br>
+
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' team.id %}">Roster</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-events' team.id %}">Events</a>
 </div>
