@@ -43,7 +43,7 @@ def player(request):
 
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
-    form = TeamForm(request.POST)
+    form = TeamForm(request.POST, request.FILES)
     if request.method == 'POST':
         if form.is_valid():
             team = form.save(commit=False)
@@ -62,7 +62,7 @@ def team_profile(request, team_id):
     return render(request, 'website/team-profile.html', { "team": team })
 
 # Routes to the page for team captains to upload a team logo.
-def upload_team_logo(request, team_id):
+def upload_team_avatar(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
     form = UploadTeamLogoForm(request.POST, request.FILES, instance=team)
     if request.method == 'POST':
@@ -70,7 +70,7 @@ def upload_team_logo(request, team_id):
             team = form.save(commit=False)
             team.save()
             return HttpResponseRedirect('/player/teams/' + team_id)
-    return render(request, 'website/upload-team-logo.html', { "form": form })
+    return render(request, 'website/upload-avatar.html', { "form": form })
 
 # Routes to the page for team captains to edit the team profile.
 def edit_team(request, team_id):
@@ -124,7 +124,7 @@ def upload_player_avatar(request, team_id, player_id):
             player = form.save(commit=False)
             player.save()
             return HttpResponseRedirect('/player/teams/' + team_id + '/roster/' + player_id)
-    return render(request, 'website/upload-player-avatar.html', { "form": form })
+    return render(request, 'website/upload-avatar.html', { "form": form })
 
 # Routes to the page for players to edit their profile.
 def edit_player(request, team_id, player_id):

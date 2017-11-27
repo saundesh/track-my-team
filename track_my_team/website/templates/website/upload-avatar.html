@@ -1,11 +1,11 @@
 {% extends 'website/header.html' %}
 
-{% block title %} Upload Team Logo {% endblock %}
+{% block title %} Upload Avatar {% endblock %}
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Upload Team Logo</p>
-    <form action="" method="post">
+    <p>Upload Avatar</p>
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">
