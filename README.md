@@ -132,11 +132,11 @@ TBD
 | Overall Design | 5 | 0-2.5 | Have nice approaches and structures in overall |
 | Participation | 5 | 0-2.5 | Interact with the group 2 times (ask a question, make a comment, help answer a question, etc.) |
 | Presentation | 4 | 0-2 | Present the code clearly |
-| Requirement - 1 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
-| Requirement - 2 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
-| Requirement - 3 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
-| Requirement - 4 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
-| Testing | 5 | 0-2.5 | 2 points: ; 2.5 points: |
+| Requirement - User Registration | 5 | 0-2.5 | 2 points: Fix previous signup/login form, new user should send to the database; 2.5 points: No two forms can be submitted, make sure user isn't already in the database, salt and hash password |
+| Requirement - User Authentication | 5 | 0-2.5 | 2 points: Login/logout user session; 2.5 points: Display data for a given user, all users should have different homepage |
+| Requirement - Captain vs. Player | 2 | 0-2 | 2 points: Display difference between user that is captain vs. player for a team, speicific buttons should only appear for captain, vise versa |
+| Requirement - Events | 8 | 0-4 | 1 point: Redesign event page; 2 points: Include Google Maps to event details page; 3 points: Allow for recurrence when creating event; 4 points: Add availability that will show if users can attend event or not |
+| Testing | 5 | 0-2.5 | 2 points: Add to manual test plan; 2.5 points: Test user accounts |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
