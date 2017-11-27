@@ -4,7 +4,8 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Upload Avatar</p>
+    <h2>Upload Avatar</h2>
+    <div style="padding-top: 10px"></div>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% for field in form %}

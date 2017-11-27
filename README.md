@@ -132,7 +132,11 @@ TBD
 | Overall Design | 5 | 0-2.5 | Have nice approaches and structures in overall |
 | Participation | 5 | 0-2.5 | Interact with the group 2 times (ask a question, make a comment, help answer a question, etc.) |
 | Presentation | 4 | 0-2 | Present the code clearly |
-| Requirements + Testing | 25 | | |
+| Requirement - 1 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
+| Requirement - 2 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
+| Requirement - 3 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
+| Requirement - 4 | 5 | 0-2.5 | 2 points: ; 2.5 points: |
+| Testing | 5 | 0-2.5 | 2 points: ; 2.5 points: |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
