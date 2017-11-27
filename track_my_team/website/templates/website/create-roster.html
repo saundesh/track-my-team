@@ -4,7 +4,8 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Add Player to Roster</p>
+    <h2>Add Player to Roster</h2>
+    <div style="padding-top: 10px"></div>
     <form action="" method="post">
         {% csrf_token %}
         {% for field in form %}

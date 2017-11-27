@@ -9,13 +9,22 @@ admin.site.register(User)
 
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('team_name', 'sport')
+
 admin.site.register(Team, TeamAdmin)
 
-# class PlayerAdmin(admin.ModelAdmin):
-#     list_display = ('number', 'first_name', 'last_name', 'team')
-# admin.site.register(Player, PlayerAdmin)
-admin.site.register(Player)
+
+
+class PlayerAdmin(admin.ModelAdmin):
+    list_display = ('number', 'name', 'team')
+
+    def name(self, obj):
+        return obj.first_name + ' ' + obj.last_name
+        
+admin.site.register(Player, PlayerAdmin)
+
+
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('date', 'event_name', 'team')
+    
 admin.site.register(Event, EventAdmin)

@@ -4,10 +4,10 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Team Profile</p>
+    <!-- <p>Team Profile</p> -->
     <img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px"/><br>
-    {{ team }} <br>
-    {{ team.city }}, {{ team.state }}
+    <h3>{{ team }}</h3>
+    <h5>{{ team.city }}, {{ team.state }}</h5>
 
     <div class="container" style="padding: 20px 0px 100px 0px">
         <a href="https://www.facebook.com/IllinoisMenace/" style="text-decoration: none">
@@ -39,7 +39,7 @@
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' team.id %}"><i class="fa fa-users" aria-hidden="true"></i> Roster</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-events' team.id %}"><i class="fa fa-calendar-o" aria-hidden="true"></i> Events</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:upload-team-logo' team.id %}"><i class="fa fa-upload" aria-hidden="true"></i> Upload Logo</a>
-    <a class="btn btn-primary btn-sm" href="{% url 'website:index' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:edit-team' team.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:delete-team' team.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
 </div>
 {% endblock %}

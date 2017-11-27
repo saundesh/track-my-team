@@ -4,14 +4,15 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Player Profile</p>
+    <!-- <p>Player Profile</p> -->
     <img src="{{ player.avatar.url }}" width=200 height=200 style="padding: 5px" /><br>
     <div style="padding-top: 5px"></div>
 
-    {{ player }} <br>
+    <h3>{{ player }}</h3>
     {% if player.number %}
-        #{{ player.number }} <br>
+        <h5>#{{ player.number }}</h5>
     {% endif %}
+    
     {% if player.email %}
         {{ player.email }} <br>
     {% endif %}
@@ -30,8 +31,8 @@
 
     <div style="padding-top: 100px"></div>
 
-    <a class="btn btn-primary btn-sm" href="{% url 'website:index' %}"><i class="fa fa-upload" aria-hidden="true"></i> Upload Avatar</a>
-    <a class="btn btn-primary btn-sm" href="{% url 'website:index' %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:upload-player-avatar' player.team.id player.id %}"><i class="fa fa-upload" aria-hidden="true"></i> Upload Avatar</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:edit-player' player.team.id player.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:delete-player' player.team.id player.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
 </div>
 {% endblock %}
