@@ -4,6 +4,8 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Welcome to Track My Team!</p>
+    <p>Welcome to the Track My Team, check out your teams!</p>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:team-list' %}"><i class="fa fa-users" aria-hidden="true"></i> Your Teams</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:create-team' %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Team</a>
 </div>
 {% endblock %}

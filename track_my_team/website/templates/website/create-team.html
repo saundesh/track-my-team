@@ -7,8 +7,6 @@
     <p>Create Team</p>
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.errors }}
-        {{ form.non_field_errors }}
         {% for field in form %}
             <div class="form-group">
                 <div class="col-sm">
@@ -17,26 +15,6 @@
                 </div>
             </div>
         {% endfor %}
-        <!-- <div class="form-group">
-            <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" id="team_name" placeholder="Team Name" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" id="sport" placeholder="Sport" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" id="state" placeholder="State" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" id="city" placeholder="City" required>
-            </div>
-        </div>     -->
         <button type="submit" class="btn btn-primary btn-sm">Create Team</button>
     </form>
 </div>

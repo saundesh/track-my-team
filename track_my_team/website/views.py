@@ -28,6 +28,10 @@ def login(request):
 def captain(request):
     return render(request, 'website/captain.html')
 
+# Routes to the page for players, he/she can view their team information.
+def player(request):
+    return render(request, 'website/player.html')
+
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
     if request.method == 'POST':
@@ -35,26 +39,6 @@ def create_team(request):
         if form.is_valid():
             form.save()
     return render(request, 'website/create-team.html', {'form': TeamForm()})
-
-# Routes to the page for team captains to create a team roster.
-def create_roster(request):
-    if request.method == 'POST':
-        form = PlayerForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-    return render(request, 'website/create-roster.html', {'form': PlayerForm()})
-
-# Routes to the page for team captains to create a team roster.
-def create_event(request):
-    if request.method == 'POST':
-        form = EventForm(request.POST)
-        if form.is_valid():
-            form.save()
-    return render(request, 'website/create-event.html', {'form': EventForm()})
-
-# Routes to the page for players, he/she can view their team information.
-def player(request):
-    return render(request, 'website/player.html')
 
 # Routes to the page for players to view a list of their teams.
 def team_list(request):
@@ -67,11 +51,20 @@ def team_profile(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
     return render(request, 'website/team-profile.html', { "team": team })
 
+# Routes to the list of teams page with specified team deleted.
 def delete_team(request, team_id):
     team = Team.objects.get(pk=team_id)
     team.delete()
     teams = Team.objects.all()
     return render(request, 'website/team-list.html', { "teams": teams })
+
+# Routes to the page for team captains to create a team roster.
+def create_roster(request):
+    if request.method == 'POST':
+        form = PlayerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    return render(request, 'website/create-roster.html', {'form': PlayerForm()})
 
 # Routes to the page for players to view their team rosters.
 def team_roster(request, team_id):
@@ -86,12 +79,21 @@ def player_profile(request, team_id, player_id):
     player = get_object_or_404(Player, pk=player_id)
     return render(request, 'website/player-profile.html', { "player": player })
 
+# Routes to the team roster page with specified player deleted.
 def delete_player(request, team_id, player_id):
     team = get_object_or_404(Team, pk=team_id)
     player = Player.objects.get(pk=player_id)
     player.delete()
     players = Player.objects.filter(team=team_id).order_by('number')
     return render(request, 'website/team-roster.html', { "roster": players })
+
+# Routes to the page for team captains to create a team roster.
+def create_event(request):
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'website/create-event.html', {'form': EventForm()})
 
 # Routes to the page for players, he/she can view their team events.
 def team_event(request, team_id):
@@ -106,6 +108,7 @@ def event_details(request, team_id, event_id):
     event = get_object_or_404(Event, pk=event_id)
     return render(request, 'website/event-details.html', { "event": event })
 
+# Routes to the event page with specified event deleted.
 def delete_event(request, team_id, event_id):
     team = get_object_or_404(Team, pk=team_id)
     event = Event.objects.get(pk=event_id)
