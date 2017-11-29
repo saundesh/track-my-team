@@ -113,11 +113,19 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 #### Part 1: User Registration
 
+Fix Week 1's user registration form so that new users add to the database. Also, make sure when a user tries to make a new account to double check with the database. Don't add a user if it already exists in the database. Salt and hash password stored in the database so that as the admin, he/she cannot see what all ther user's passwords are.
+
 #### Part 2: User Authentication
+
+The user interface should be able to check with the database and only allow the user to continue if their email and password matches. Allow for user session which means the user can be stayed logged in once authenticated for a period of time and also logout once he/she is done using Track My Team. When the user successfully logins, the pages should display different data depending on user login.
 
 #### Part 3: User Interface - Captain vs. Player
 
+For each team, a user is either an admin (captain) or a regular player. The pages should display different information between a captain and player. Captains will have access all the editting features whereas players can only see all the profile information and events.
+
 #### Part 4: Events
+
+Redesign the event page so it looks refurnished. For each event, the event detail page will include a Google Map of the set location. In addition, make it possible for events to be recurring. When editting recurring events, make sure it can change for just one event.
 
 #### Part 5: Testing
 
@@ -141,7 +149,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Requirement - User Registration | 5 | 0-2.5 | 2 points: Fix previous signup/login form, new user should send to the database; 2.5 points: No two forms can be submitted, make sure user isn't already in the database, salt and hash password |
 | Requirement - User Authentication | 5 | 0-2.5 | 2 points: Login/logout user session; 2.5 points: Display data for a given user, all users should have different homepage |
 | Requirement - Captain vs. Player | 2.5 | 0-2.5 | 2.5 points: Display difference between user that is captain vs. player for a team, speicific buttons should only appear for captain, vise versa |
-| Requirement - Events | 7.5 | 0-2.5 | 1 point: Redesign event page; 2 points: Include Google Maps to event details page and allow for recurrence when creating event; 2.5 points: Add availability that will show if users can attend event or not |
+| Requirement - Events | 7.5 | 0-2.5 | 1 point: Redesign event page; 2 points: Include Google Maps to event details; 2.5 points: Allow for recurrence when creating event |
 | Testing | 5 | 0-2.5 | 2 points: Add to manual test plan; 2.5 points: Test user accounts |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
@@ -150,13 +158,13 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 ### Requirements
 
-#### Part 1: 
+#### Part 1: Event Detail
 
-#### Part 2: 
+#### Part 2: Availability
 
-#### Part 3: 
+#### Part 3: Searching
 
-#### Part 4: 
+#### Part 4: Announcements Page
 
 #### Part 5: Testing
 
@@ -177,10 +185,10 @@ Expand the manual test plan for this week. Write tests to see if the user regist
 | Overall Design | 5 | 0-2.5 | Have nice approaches and structures in overall |
 | Participation | 5 | 0-2.5 | Interact with the group 2 times (ask a question, make a comment, help answer a question, etc.) |
 | Presentation | 4 | 0-2 | Present the code clearly |
-| Requirement -  | 5 | 0-2.5 |  |
-| Requirement -  | 5 | 0-2.5 |  |
-| Requirement -  | 5 | 0-2.5 |  |
-| Requirement -  | 5 | 0-2.5 |  |
+| Requirement - Event Detail | 5 | 0-2.5 |  |
+| Requirement - Availability | 5 | 0-2.5 |  |
+| Requirement - Search | 5 | 0-2.5 |  |
+| Requirement - Announcement | 5 | 0-2.5 |  |
 | Testing | 5 | 0-2.5 | 2.5 points: Add to manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
