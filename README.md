@@ -148,7 +148,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Presentation | 4 | 0-2 | Present the code clearly |
 | Requirement - Registration | 5 | 0-2.5 | 2 points: Fix previous signup/login form, new user should send to the database; 2.5 points: Make sure user isn't already in the database, salt and hash password |
 | Requirement - Authentication | 5 | 0-2.5 | 2 points: Login/logout user session; 2.5 points: Display data for a given user, all users should have different homepage |
-| Requirement - User Type | 2.5 | 0-2.5 | 2.5 points: Display difference between user that is captain vs. player for a team, speicific buttons should only appear for captain, vise versa |
+| Requirement - UI | 2.5 | 0-2.5 | 2.5 points: Display difference between user that is captain vs. player for a team, speicific buttons should only appear for captain, vise versa |
 | Requirement - Events | 7.5 | 0-2.5 | 1 point: Redesign event page; 2 points: Include Google Maps to event details; 2.5 points: Allow for recurrence when creating event |
 | Testing | 5 | 0-2.5 | 2 points: Add to manual test plan; 2.5 points: Test user accounts |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |

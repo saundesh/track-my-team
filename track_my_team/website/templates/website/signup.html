@@ -4,7 +4,8 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Register Your Account</p>
+    <h2>Register Your Account</h2>
+    <div style="padding-top: 10px"></div>
     <form action="" method="post">
         {% csrf_token %}
         {% for field in form %}
