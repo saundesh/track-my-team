@@ -8,10 +8,6 @@ Track My Team: A web app that will track all sports team events. This web app us
 
 #### Part 0: Tutorials
 
-Sources I used for learning Django:
-- https://pythonprogramming.net/django-web-development-with-python-intro/
-- https://docs.djangoproject.com/en/1.11/intro/tutorial01/
-
 #### Part 1: Navigation Bar
 
 Create a navigation bar that will appear at the top of every page. This will allow the user to easily access the views.
@@ -115,7 +111,17 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 ### Requirements
 
-TBD
+#### Part 1: User Registration
+
+#### Part 2: User Authentication
+
+#### Part 3: User Interface - Captain vs. Player
+
+#### Part 4: Events
+
+#### Part 5: Testing
+
+Expand the manual test plan for this week. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe. Write tests to see if the user registration and authentication work.
 
 ### Grading Rubric
 
@@ -144,7 +150,17 @@ TBD
 
 ### Requirements
 
-TBD
+#### Part 1: 
+
+#### Part 2: 
+
+#### Part 3: 
+
+#### Part 4: 
+
+#### Part 5: Testing
+
+Expand the manual test plan for this week. Write tests to see if the user registration and authentication work. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe.
 
 ### Grading Rubric
 
@@ -169,3 +185,21 @@ TBD
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
+
+
+## Sources
+- https://pythonprogramming.net/django-web-development-with-python-intro/
+- https://docs.djangoproject.com/en/1.11/intro/tutorial01/
+- https://docs.djangoproject.com/en/1.11/intro/tutorial07/
+- https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/
+- https://docs.djangoproject.com/en/1.11/topics/http/file-uploads/
+- https://docs.djangoproject.com/en/1.11/topics/auth/
+- https://docs.djangoproject.com/en/1.11/topics/auth/default/
+- https://docs.djangoproject.com/en/1.11/topics/db/queries/
+- https://docs.djangoproject.com/en/1.11/ref/validators/
+- https://github.com/buckyroberts/Viberr/
+- https://www.youtube.com/watch?v=qgGIqRFvFFk&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK
+- https://www.youtube.com/watch?v=Fc2O3_2kax8&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj
+- https://schier.co/blog/2014/12/05/html-templating-output-a-grid-in-a-single-loop.html
+- https://stackoverflow.com/questions/15175032/show-images-in-django-templates
+- https://stackoverflow.com/questions/5225792/django-modelform-label-captialisation

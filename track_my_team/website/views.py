@@ -5,9 +5,11 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 
 from .forms import UserForm, TeamForm, UploadTeamLogoForm, PlayerForm, UploadPlayerAvatarForm, PlayerChangeForm, EventForm
-from .models import User, Team, Player, Event
+from .models import Team, Player, Event
 
 ### HOME PAGE
 
@@ -19,11 +21,15 @@ def index(request):
 
 # Routes to the page for users to create an account.
 def signup(request):
+    form = UserForm(request.POST)
     if request.method == 'POST':
-        form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
-    return render(request, 'website/signup.html', { "form": UserForm() })
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+    return render(request, 'website/signup.html', { "form": form })
 
 # Routes to the page for users to log into their account.
 def login(request):

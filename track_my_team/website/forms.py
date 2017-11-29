@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import User, Team, Player, Event
+from .models import Team, Player, Event
 
 class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ['email', 'password']
+        fields = ['first_name', 'last_name', 'email', 'password']
 
 class TeamForm(forms.ModelForm):
     class Meta:
