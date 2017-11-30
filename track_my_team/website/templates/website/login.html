@@ -9,20 +9,23 @@
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <form action="{% url 'website:login-user'%}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <div class="col-sm">
-                <input type="name" class="form-control form-control-sm" name="username" placeholder="Username" required>
+    <div class="container text-center" style="width: 30%">
+        <form action="{% url 'website:login-user'%}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="col-sm">
+                    <input type="name" class="form-control form-control-sm" name="username" placeholder="Username" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm">
-                <input type="password" class="form-control form-control-sm" name="password" placeholder="Password" required>
+            <div class="form-group">
+                <div class="col-sm">
+                    <input type="password" class="form-control form-control-sm" name="password" placeholder="Password" required>
+                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-sm">Log In</button>
-    </form>
+            <button type="submit" class="btn btn-primary btn-sm">Log In</button>
+        </form>
+    </div>
+    
     <div class="new-account" style="padding-top: 20px">
         Don't have an account? Click <a href="{% url 'website:signup' %}">here</a> to create an account.
     </div>

@@ -16,18 +16,20 @@
             <p><strong>{{ error|escape }}</strong></p>
         {% endfor %}
     {% endif %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="form-group">
-                <div class="col-sm">
-                    <!-- {{ field.label_tag }} -->
-                    {{ field }}
+    <div class="container text-center" style="width: 30%">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <div class="col-sm">
+                        <!-- {{ field.label_tag }} -->
+                        {{ field }}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-        <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>
-    </form>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>
+        </form>
+    </div>
     <div class="new-account" style="padding-top: 20px">
         Already have an account? Click <a href="{% url 'website:login-user' %}">here</a> to login.
     </div>

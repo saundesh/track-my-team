@@ -10,8 +10,8 @@ from django.utils.timezone import activate
 from .models import Team, Player, Event
 
 class UserForm(forms.ModelForm):
-    first_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
-    last_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Last Name'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Last Name'}))
     username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Username'}))
     email = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Email'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','placeholder':'Password'}))
@@ -31,6 +31,8 @@ class TeamForm(forms.ModelForm):
         fields = ['team_name', 'sport', 'state', 'city']
 
 class UploadTeamAvatarForm(forms.ModelForm):
+    avatar = forms.FileField(widget=forms.ClearableFileInput(attrs={'class':'form-control form-control-sm'}))
+    
     class Meta:
         model = Team
         fields = ['avatar']
@@ -46,6 +48,8 @@ class PlayerForm(forms.ModelForm):
         fields = ['team', 'first_name', 'last_name', 'number']
 
 class UploadPlayerAvatarForm(forms.ModelForm):
+    avatar = forms.FileField(widget=forms.ClearableFileInput(attrs={'class':'form-control form-control-sm'}))
+
     class Meta:
         model = Player
         fields = ['avatar']
@@ -67,8 +71,8 @@ class PlayerChangeForm(forms.ModelForm):
 class EventForm(forms.ModelForm):
     # team = forms.ChoiceField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
     event_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Event Name'}))
-    date = forms.DateField(widget=forms.SelectDateWidget, initial=timezone.now)
-    time = forms.TimeField(widget=forms.TimeInput(format='%I:%M %p'), initial=timezone.now)
+    date = forms.DateField(widget=forms.SelectDateWidget(attrs={'class':'form-control form-control-sm'}), initial=timezone.now)
+    time = forms.TimeField(widget=forms.TimeInput(format='%I:%M %p', attrs={'class':'form-control form-control-sm','placeholder':'Time'}), initial=timezone.now)
     location = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Location'}))
     
     class Meta:
