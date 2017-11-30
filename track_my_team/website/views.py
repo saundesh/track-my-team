@@ -23,7 +23,7 @@ def index(request):
 
 # Routes to the page for users to create an account.
 def signup(request):
-    form = UserForm(request.POST)
+    form = UserForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
             user = form.save(commit=False)
@@ -55,7 +55,7 @@ def login_user(request):
 # Routes to the page for users to log out of their account.
 def logout_user(request):
     logout(request)
-    form = UserForm(request.POST)
+    form = UserForm(request.POST or None)
     return render(request, 'website/login.html', { "form": form })
 
 ### USER TYPE: CAPTAIN OR PLAYER

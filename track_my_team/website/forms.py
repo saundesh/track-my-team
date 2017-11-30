@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from .models import Team, Player, Event
 
 class UserForm(forms.ModelForm):
+    first_name = forms.CharField(label="First Name", required=False)
+    last_name = forms.CharField(label="Last Name", required=False)
+    email = forms.CharField(label="Email", required=False)
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User

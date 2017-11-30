@@ -168,7 +168,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 #### Part 5: Testing
 
-Expand the manual test plan for this week. Write tests to see if the user registration and authentication work. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe.
+Expand the manual test plan for this week. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe.
 
 ### Grading Rubric
 
