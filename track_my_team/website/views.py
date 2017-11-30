@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
-from .forms import UserForm, TeamForm, UploadTeamLogoForm, PlayerForm, UploadPlayerAvatarForm, PlayerChangeForm, EventForm
+from .forms import UserForm, TeamForm, UploadTeamAvatarForm, PlayerForm, UploadPlayerAvatarForm, PlayerChangeForm, EventForm
 from .models import Team, Player, Event
 
 ### HOME PAGE
@@ -93,7 +93,7 @@ def team_profile(request, team_id):
 # Routes to the page for team captains to upload a team logo.
 def upload_team_avatar(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
-    form = UploadTeamLogoForm(request.POST, request.FILES, instance=team)
+    form = UploadTeamAvatarForm(request.POST or None, request.FILES or None, instance=team)
     if request.method == 'POST':
         if form.is_valid():
             team = form.save(commit=False)
@@ -104,7 +104,7 @@ def upload_team_avatar(request, team_id):
 # Routes to the page for team captains to edit the team profile.
 def edit_team(request, team_id):
     team = get_object_or_404(Team, pk=team_id)
-    form = TeamForm(request.POST, instance=team)
+    form = TeamForm(request.POST or None, instance=team)
     if request.method == 'POST':
         if form.is_valid():
             team = form.save(commit=False)
@@ -147,7 +147,7 @@ def player_profile(request, team_id, player_id):
 def upload_player_avatar(request, team_id, player_id):
     team = get_object_or_404(Team, pk=team_id)
     player = get_object_or_404(Player, pk=player_id)
-    form = UploadPlayerAvatarForm(request.POST, request.FILES, instance=player)
+    form = UploadPlayerAvatarForm(request.POST or None, request.FILES or None, instance=player)
     if request.method == 'POST':
         if form.is_valid():
             player = form.save(commit=False)
@@ -159,7 +159,7 @@ def upload_player_avatar(request, team_id, player_id):
 def edit_player(request, team_id, player_id):
     team = get_object_or_404(Team, pk=team_id)
     player = get_object_or_404(Player, pk=player_id)
-    form = PlayerChangeForm(request.POST, request.FILES, instance=player)
+    form = PlayerChangeForm(request.POST or None, request.FILES or None, instance=player)
     if request.method == 'POST':
         if form.is_valid():
             player = form.save(commit=False)
@@ -203,7 +203,7 @@ def event_details(request, team_id, event_id):
 def edit_event(request, team_id, event_id):
     team = get_object_or_404(Team, pk=team_id)
     event = get_object_or_404(Event, pk=event_id)
-    form = EventForm(request.POST, instance=event)
+    form = EventForm(request.POST or None, instance=event)
     if request.method == 'POST':
         if form.is_valid():
             event = form.save(commit=False)

@@ -211,6 +211,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 ### Bootstrap
 - https://v4-alpha.getbootstrap.com/components/navbar/
+- https://v4-alpha.getbootstrap.com/components/forms/
 - https://v4-alpha.getbootstrap.com/layout/grid/
 
 ### Examples

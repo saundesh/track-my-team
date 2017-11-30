@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 
 # Team model will store team profile information
 class Team(models.Model):
-    team_name = models.CharField(verbose_name="Team Name", max_length=64)
+    team_name = models.CharField(max_length=64)
     sport = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
@@ -28,14 +28,14 @@ class Team(models.Model):
 # Player model will store player profile information
 class Player(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    first_name = models.CharField(verbose_name="First Name", max_length=64)
-    last_name = models.CharField(verbose_name="Last Name", max_length=64)
+    first_name = models.CharField(max_length=64)
+    last_name = models.CharField(max_length=64)
     number = models.IntegerField(null=True, blank=True)
     email = models.CharField(max_length=64, blank=True)
-    phone_number = models.IntegerField(verbose_name="Phone Number", null=True, blank=True)
+    phone_number = models.IntegerField(null=True, blank=True)
     address = models.CharField(max_length=128, blank=True)
-    uin = models.IntegerField(verbose_name="UIN", null=True, blank=True)
-    usau_id = models.IntegerField(verbose_name="USAU ID", null=True, blank=True)
+    uin = models.IntegerField(null=True, blank=True)
+    usau_id = models.IntegerField(null=True, blank=True)
     avatar = models.FileField(default='default.png')
 
     def __str__(self):
@@ -44,7 +44,7 @@ class Player(models.Model):
 # Event model will store player profile information
 class Event(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    event_name = models.CharField(verbose_name="Event Name", max_length=64)
+    event_name = models.CharField(max_length=64)
     date = models.DateField()
     time = models.TimeField()
     location = models.CharField(max_length=64)

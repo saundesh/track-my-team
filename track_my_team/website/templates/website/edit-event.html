@@ -9,11 +9,11 @@
     {% if form.errors %}
         {% for field in form %}
             {% for error in field.errors %}
-                <p><strong>{{ error|escape }}</strong></p>>
+                <p><strong>{{ error|escape }}</strong></p>
             {% endfor %}
         {% endfor %}
         {% for error in form.non_field_errors %}
-            <p><strong>{{ error|escape }}</strong></p>>
+            <p><strong>{{ error|escape }}</strong></p>
         {% endfor %}
     {% endif %}
     <form action="" method="post">
@@ -21,7 +21,7 @@
         {% for field in form %}
             <div class="form-group">
                 <div class="col-sm">
-                    {{ field.label_tag }}
+                    <!-- {{ field.label_tag }} -->
                     {{ field }}
                 </div>
             </div>
