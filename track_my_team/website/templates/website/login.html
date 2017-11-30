@@ -1,22 +1,30 @@
-{% extends 'website/header.html' %}
+{% extends 'website/base.html' %}
 
 {% block title %} Log In {% endblock %}
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
-    <p>Login To Account</p>
-    <form class="login-form">
+    <h2>Login To Account</h2>
+    <div style="padding-top: 10px"></div>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <form action="{% url 'website:login-user'%}" method="post">
+        {% csrf_token %}
         <div class="form-group">
             <div class="col-sm">
-                <input type="email" class="form-control form-control-sm" placeholder="Email" required>
+                <input type="name" class="form-control form-control-sm" name="username" placeholder="Username" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm">
-                <input type="password" class="form-control form-control-sm" placeholder="Password" required>
+                <input type="password" class="form-control form-control-sm" name="password" placeholder="Password" required>
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-sm">Log In</button>
     </form>
+    <div class="new-account" style="padding-top: 20px">
+        Don't have an account? Click <a href="{% url 'website:signup' %}">here</a> to create an account.
+    </div>
 </div>
 {% endblock %}

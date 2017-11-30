@@ -1,4 +1,4 @@
-{% extends 'website/header.html' %}
+{% extends 'website/base.html' %}
 
 {% block title %} Sign Up {% endblock %}
 
@@ -18,5 +18,8 @@
         {% endfor %}
         <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>
     </form>
+    <div class="new-account" style="padding-top: 20px">
+        Already have an account? Click <a href="{% url 'website:login-user' %}">here</a> to login.
+    </div>
 </div>
 {% endblock %}

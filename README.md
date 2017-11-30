@@ -160,11 +160,11 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 #### Part 1: Event Detail
 
-#### Part 2: Availability
+#### Part 2: Settings
 
-#### Part 3: Searching
+#### Part 3: Announcements
 
-#### Part 4: Announcements
+#### Part 4: Search
 
 #### Part 5: Testing
 
@@ -185,29 +185,35 @@ Expand the manual test plan for this week. Write tests to see if the user regist
 | Overall Design | 5 | 0-2.5 | Have nice approaches and structures in overall |
 | Participation | 5 | 0-2.5 | Interact with the group 2 times (ask a question, make a comment, help answer a question, etc.) |
 | Presentation | 4 | 0-2 | Present the code clearly |
-| Requirement - Event Detail | 5 | 0-2.5 |  |
-| Requirement - Availability | 5 | 0-2.5 |  |
-| Requirement - Search | 5 | 0-2.5 |  |
-| Requirement - Announcement | 5 | 0-2.5 |  |
+| Requirement - Event Detail | 5 | 0-2.5 | 2 points: Include a notes section that a player should know about for a specific event; 2.5 points: Allow attachments (documents, photos, etc.) |
+| Requirement - Settings | 5 | 0-2.5 | 2 points: Allow for users to change account information such as display name, username, email, and password; 2.5 points: Ability to reset password if user forgets it |
+| Requirement - Announcements | 5 | 0-2.5 | 2 points: Home page will display announcements for important information; 2.5 points: Posts can be pinned, shown on the top before all other announcements |
+| Requirement - Search | 5 | 0-2.5 | 2 points: Ability to search for players and events; 2.5 point: Ability to search and filter |
 | Testing | 5 | 0-2.5 | 2.5 points: Add to manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
 
-
 ## Sources
+
+### Django Tutorials
 - https://pythonprogramming.net/django-web-development-with-python-intro/
 - https://docs.djangoproject.com/en/1.11/intro/tutorial01/
 - https://docs.djangoproject.com/en/1.11/intro/tutorial07/
+
+### Django Documentation
 - https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/
 - https://docs.djangoproject.com/en/1.11/topics/http/file-uploads/
 - https://docs.djangoproject.com/en/1.11/topics/auth/
 - https://docs.djangoproject.com/en/1.11/topics/auth/default/
 - https://docs.djangoproject.com/en/1.11/topics/db/queries/
 - https://docs.djangoproject.com/en/1.11/ref/validators/
+
+### Bootstrap
+- https://v4-alpha.getbootstrap.com/components/navbar/
+- https://v4-alpha.getbootstrap.com/layout/grid/
+
+### Examples
 - https://github.com/buckyroberts/Viberr/
 - https://www.youtube.com/watch?v=qgGIqRFvFFk&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK
 - https://www.youtube.com/watch?v=Fc2O3_2kax8&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj
-- https://schier.co/blog/2014/12/05/html-templating-output-a-grid-in-a-single-loop.html
-- https://stackoverflow.com/questions/15175032/show-images-in-django-templates
-- https://stackoverflow.com/questions/5225792/django-modelform-label-captialisation

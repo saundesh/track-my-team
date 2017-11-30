@@ -15,6 +15,8 @@ from .models import Team, Player, Event
 
 # Routes to the welcome homepage.
 def index(request):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     return render(request, 'website/home.html')
 
 ### USER REGISTRATION: SIGNUP AND LOGIN
@@ -25,15 +27,36 @@ def signup(request):
     if request.method == 'POST':
         if form.is_valid():
             user = form.save(commit=False)
-            email = form.cleaned_data['email']
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/')
     return render(request, 'website/signup.html', { "form": form })
 
 # Routes to the page for users to log into their account.
-def login(request):
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/')
+        else:
+            return render(request, 'website/login.html', { 'error_message': 'Invalid Login' })
     return render(request, 'website/login.html')
+
+# Routes to the page for users to log out of their account.
+def logout_user(request):
+    logout(request)
+    form = UserForm(request.POST)
+    return render(request, 'website/login.html', { "form": form })
 
 ### USER TYPE: CAPTAIN OR PLAYER
 
