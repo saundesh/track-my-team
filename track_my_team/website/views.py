@@ -72,7 +72,7 @@ def player(request):
 
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
-    form = TeamForm(request.POST, request.FILES)
+    form = TeamForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
             team = form.save(commit=False)
@@ -123,7 +123,7 @@ def delete_team(request, team_id):
 
 # Routes to the page for team captains to create a team roster.
 def create_roster(request):
-    form = PlayerForm(request.POST, request.FILES)
+    form = PlayerForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
             player = form.save(commit=False)
@@ -179,7 +179,7 @@ def delete_player(request, team_id, player_id):
 
 # Routes to the page for team captains to create a team roster.
 def create_event(request):
-    form = EventForm(request.POST)
+    form = EventForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
             event = form.save(commit=False)

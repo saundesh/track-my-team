@@ -45,8 +45,8 @@ class Player(models.Model):
 class Event(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     event_name = models.CharField(verbose_name="Event Name", max_length=64)
-    date = models.DateField(null=True)
-    time = models.TimeField(null=True)
+    date = models.DateField()
+    time = models.TimeField()
     location = models.CharField(max_length=64)
 
     def __str__(self):
