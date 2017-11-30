@@ -2,17 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
-
-# User model will store account information
-# class User(models.Model):
-#     email = models.CharField(max_length=64)
-#     password = models.CharField(max_length=64)
-
-#     def __str__(self):
-#         return self.email
 
 # Team model will store team profile information
 class Team(models.Model):

@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
