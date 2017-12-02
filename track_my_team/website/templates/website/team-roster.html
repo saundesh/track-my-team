@@ -40,6 +40,6 @@
         {% endif %}
     </div>
     <br>
-    <a class="btn btn-primary btn-sm" href="{% url 'website:create-roster' %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Player</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'website:create-roster' team.id %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Player</a>
 </div>
 {% endblock %}

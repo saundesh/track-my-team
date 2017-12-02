@@ -144,11 +144,13 @@ def delete_team(request, team_id):
 ### PLAYER: CREATE, VIEW, EDIT, DELETE
 
 # Routes to the page for team captains to create a team roster.
-def create_roster(request):
+def create_roster(request, team_id):
     if not request.user.is_authenticated():
         return render(request, 'website/login.html')
     else:
+        team = get_object_or_404(Team, pk=team_id)
         form = PlayerForm(request.POST or None, request.FILES or None)
+        form.fields['team'].queryset = Team.objects.filter(user=request.user)
         if request.method == 'POST':
             if form.is_valid():
                 player = form.save(commit=False)
@@ -163,7 +165,7 @@ def team_roster(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         players = Player.objects.filter(team=team_id).order_by('number')
-        return render(request, 'website/team-roster.html', { "roster": players })
+        return render(request, 'website/team-roster.html', { "team": team, "roster": players })
 
 # Routes to the page for players to view each player profile.
 def player_profile(request, team_id, player_id):
@@ -218,11 +220,13 @@ def delete_player(request, team_id, player_id):
 ### EVENT: CREATE, VIEW, EDIT, DELETE
 
 # Routes to the page for team captains to create a team roster.
-def create_event(request):
+def create_event(request, team_id):
     if not request.user.is_authenticated():
         return render(request, 'website/login.html')
     else:
+        team = get_object_or_404(Team, pk=team_id)
         form = EventForm(request.POST or None)
+        form.fields['team'].queryset = Team.objects.filter(user=request.user)
         if request.method == 'POST':
             if form.is_valid():
                 event = form.save(commit=False)
@@ -237,7 +241,7 @@ def team_event(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         events = Event.objects.filter(team=team_id).order_by('date')
-        return render(request, 'website/team-event.html', { "events": events })
+        return render(request, 'website/team-event.html', { "team": team, "events": events })
 
 # Routes to the page for players, he/she can view details for each team event.
 def event_details(request, team_id, event_id):
