@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import Permission, User
-
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -24,7 +23,7 @@ class Player(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
-    number = models.IntegerField(null=True, blank=True)
+    number = models.IntegerField()
     email = models.CharField(max_length=64, blank=True)
     phone_number = models.IntegerField(null=True, blank=True)
     address = models.CharField(max_length=128, blank=True)

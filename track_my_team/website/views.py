@@ -155,7 +155,7 @@ def create_roster(request, team_id):
         if request.method == 'POST':
             if form.is_valid():
                 player = form.save(commit=False)
-                player.save()
+                form.save()
             return HttpResponseRedirect('/player/teams/' + request.POST['team'] + '/roster/')
         return render(request, 'website/create-roster.html', { "form": form })
 
@@ -216,7 +216,7 @@ def delete_player(request, team_id, player_id):
         player = Player.objects.get(pk=player_id)
         player.delete()
         players = Player.objects.filter(team=team_id).order_by('number')
-        return render(request, 'website/team-roster.html', { "roster": players })
+        return render(request, 'website/team-roster.html', { "team": team, "roster": players })
 
 ### EVENT: CREATE, VIEW, EDIT, DELETE
 
@@ -277,4 +277,4 @@ def delete_event(request, team_id, event_id):
         event = Event.objects.get(pk=event_id)
         event.delete()
         events = Event.objects.filter(team=team_id).order_by('date')
-        return render(request, 'website/team-event.html', { "events": events })
+        return render(request, 'website/team-event.html', { "team": team, "events": events })
