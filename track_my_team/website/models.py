@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import Permission, User
+
 from django.db import models
 
 # Create your models here.
 
 # Team model will store team profile information
 class Team(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     team_name = models.CharField(max_length=64)
     sport = models.CharField(max_length=64)
     state = models.CharField(max_length=64)

@@ -7,7 +7,7 @@ from .models import Team, Player, Event
 # Register your models here.
 
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('team_name', 'sport')
+    list_display = ('team_name', 'sport', 'user')
 
 admin.site.register(Team, TeamAdmin)
 
