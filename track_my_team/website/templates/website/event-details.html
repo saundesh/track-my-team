@@ -7,9 +7,8 @@
     <h2>Event Details</h2>
     <div style="padding-top: 10px"></div>
     {{ event }} <br>
-    {{ event.date }} <br>
-    {{ event.time }} <br>
-    {{ event.location }} <br>
+    {{ event.start_date }} {{ event.start_time }} - {{ event.end_date }} {{ event.end_time }} <br>
+    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }} <br>
 
     <div style="padding-top: 100px"></div>
     

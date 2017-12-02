@@ -11,7 +11,7 @@
                 {% load tags %}
                 {% for team in teams %}
                     <div class="col">
-                        <a href="/player/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px" /></a><br>
+                        <a href="/player/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /></a><br>
                         {{ team.team_name }}
                         <div style="padding-top: 5px"></div>
                     </div>

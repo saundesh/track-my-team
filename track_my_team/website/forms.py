@@ -72,10 +72,12 @@ class PlayerChangeForm(forms.ModelForm):
 class EventForm(forms.ModelForm):
     team = forms.ModelChoiceField(queryset=Team.objects, empty_label=None)
     event_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Event Name'}))
-    date = forms.DateField(widget=forms.SelectDateWidget(attrs={'class':'form-control form-control-sm'}), initial=timezone.now)
-    time = forms.TimeField(input_formats=['%I:%M %p'], widget=forms.TimeInput(format='%I:%M %p', attrs={'class':'form-control form-control-sm','placeholder':'Time'}), initial=timezone.now)
+    start_date = forms.DateField(widget=forms.SelectDateWidget(attrs={'class':'form-control form-control-sm'}), initial=timezone.now)
+    start_time = forms.TimeField(input_formats=['%I:%M %p'], widget=forms.TimeInput(format='%I:%M %p', attrs={'class':'form-control form-control-sm','placeholder':'Time'}), initial=timezone.now)
+    end_date = forms.DateField(widget=forms.SelectDateWidget(attrs={'class':'form-control form-control-sm'}), initial=timezone.now)
+    end_time = forms.TimeField(input_formats=['%I:%M %p'], widget=forms.TimeInput(format='%I:%M %p', attrs={'class':'form-control form-control-sm','placeholder':'Time'}), initial=timezone.now)
     location = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Location'}))
     
     class Meta:
         model = Event
-        fields = ['team', 'event_name', 'date', 'time', 'location']
+        fields = ['team', 'event_name', 'start_date', 'start_time', 'end_date', 'end_time', 'location']

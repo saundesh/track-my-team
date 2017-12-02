@@ -5,7 +5,8 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <!-- <p>Team Profile</p> -->
-    <img src="{{ team.avatar.url }}" width=200 height=200 style="padding: 5px"/><br>
+    <img src="{{ team.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px"/><br>
+    <div style="padding-top: 10px"></div>
     <h3>{{ team }}</h3>
     <h5>{{ team.city }}, {{ team.state }}</h5>
 

@@ -24,6 +24,6 @@ admin.site.register(Player, PlayerAdmin)
 
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('date', 'event_name', 'team')
+    list_display = ('start_date', 'event_name', 'team')
     
 admin.site.register(Event, EventAdmin)

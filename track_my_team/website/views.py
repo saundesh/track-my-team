@@ -165,7 +165,7 @@ def team_roster(request, team_id):
         return render(request, 'website/login.html')
     else:
         team = get_object_or_404(Team, pk=team_id)
-        players = Player.objects.filter(team=team_id).order_by('number')
+        players = Player.objects.filter(team=team_id).order_by('number', 'first_name')
         return render(request, 'website/team-roster.html', { "team": team, "roster": players })
 
 # Routes to the page for players to view each player profile.
@@ -241,7 +241,7 @@ def team_event(request, team_id):
         return render(request, 'website/login.html')
     else:
         team = get_object_or_404(Team, pk=team_id)
-        events = Event.objects.filter(team=team_id).order_by('date')
+        events = Event.objects.filter(team=team_id).order_by('start_date', 'start_time')
         return render(request, 'website/team-event.html', { "team": team, "events": events })
 
 # Routes to the page for players, he/she can view details for each team event.
@@ -276,5 +276,5 @@ def delete_event(request, team_id, event_id):
         team = get_object_or_404(Team, pk=team_id)
         event = Event.objects.get(pk=event_id)
         event.delete()
-        events = Event.objects.filter(team=team_id).order_by('date')
+        events = Event.objects.filter(team=team_id).order_by('start_date', 'start_time')
         return render(request, 'website/team-event.html', { "team": team, "events": events })

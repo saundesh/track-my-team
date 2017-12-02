@@ -5,8 +5,8 @@
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <!-- <p>Player Profile</p> -->
-    <img src="{{ player.avatar.url }}" width=200 height=200 style="padding: 5px" /><br>
-    <div style="padding-top: 5px"></div>
+    <img src="{{ player.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /><br>
+    <div style="padding-top: 10px"></div>
 
     <h3>{{ player }}</h3>
     {% if player.number %}
