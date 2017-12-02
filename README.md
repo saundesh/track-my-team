@@ -160,11 +160,19 @@ Expand the manual test plan for this week. Write a test plan including screensho
 
 #### Part 1: Event Detail
 
+For each event detail page, there will be more features implemented. It will include a notes section that a player should know about for a specific event. For example, a practice event could include the drills done so if players missed practice, they can still view what the team worked on. In addition, allow attachments (documents, photos, etc.) for an event. These attachments can also be viewed in an attachments page from the team home page.
+
 #### Part 2: Settings
+
+Every user should be able to edit their account information. For example, if a user types the wrong name when registering, they should be able to edit it. In addition, if a user forgets their password, they will want to be able to reset it or even if they know it, they should be able to change their password. When the user clicks on their username profile on the navigation bar, it will redirect them to the settings page that will allow the user to make all these changes.
 
 #### Part 3: Announcements
 
+In the case there is information that needs to be sent to the team that isn't related to an event, it will be considered as an announcements. All announcements will be able to be displayed on the homepage. For the more important announcements, they can be pinned to the top.
+
 #### Part 4: Search
+
+A search functionality will be added to the navigation bar that will allow users to easily search for players and events in the teams they are a part of. Instaed of having to click a bunch to get player contact information or event details, the search bar will show the results and once a user clicks on the person or event, it will redirect right to the player profile or event details page.
 
 #### Part 5: Testing
 
