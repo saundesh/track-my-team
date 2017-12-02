@@ -18,6 +18,9 @@ from .models import Team, Player, Event
 def index(request):
     if not request.user.is_authenticated():
         return render(request, 'website/login.html')
+    else:
+        teams = Team.objects.filter(user=request.user)
+        
     return render(request, 'website/home.html')
 
 ### USER REGISTRATION: SIGNUP AND LOGIN
@@ -73,6 +76,8 @@ def player(request):
 
 # Routes to the page for team captains to create a team profile.
 def create_team(request):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     form = TeamForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -83,16 +88,22 @@ def create_team(request):
 
 # Routes to the page for players to view a list of their teams.
 def team_list(request):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     teams = Team.objects.all()
     return render(request, 'website/team-list.html', { "teams": teams })
 
 # Routes to the page for players to view each team profile.
 def team_profile(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     return render(request, 'website/team-profile.html', { "team": team })
 
 # Routes to the page for team captains to upload a team logo.
 def upload_team_avatar(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     form = UploadTeamAvatarForm(request.POST or None, request.FILES or None, instance=team)
     if request.method == 'POST':
@@ -104,6 +115,8 @@ def upload_team_avatar(request, team_id):
 
 # Routes to the page for team captains to edit the team profile.
 def edit_team(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     form = TeamForm(request.POST or None, instance=team)
     if request.method == 'POST':
@@ -115,15 +128,19 @@ def edit_team(request, team_id):
 
 # Routes to the list of teams page with specified team deleted.
 def delete_team(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = Team.objects.get(pk=team_id)
     team.delete()
-    teams = Team.objects.all()
+    teams = Team.objects.filter(user=request.user)
     return render(request, 'website/team-list.html', { "teams": teams })
 
 ### PLAYER: CREATE, VIEW, EDIT, DELETE
 
 # Routes to the page for team captains to create a team roster.
 def create_roster(request):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     form = PlayerForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -134,18 +151,24 @@ def create_roster(request):
 
 # Routes to the page for players to view their team rosters.
 def team_roster(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     players = Player.objects.filter(team=team_id).order_by('number')
     return render(request, 'website/team-roster.html', { "roster": players })
 
 # Routes to the page for players to view each player profile.
 def player_profile(request, team_id, player_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     player = get_object_or_404(Player, pk=player_id)
     return render(request, 'website/player-profile.html', { "player": player })
 
 # Routes to the page for players to upload a profile picture.
 def upload_player_avatar(request, team_id, player_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     player = get_object_or_404(Player, pk=player_id)
     form = UploadPlayerAvatarForm(request.POST or None, request.FILES or None, instance=player)
@@ -158,6 +181,8 @@ def upload_player_avatar(request, team_id, player_id):
 
 # Routes to the page for players to edit their profile.
 def edit_player(request, team_id, player_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     player = get_object_or_404(Player, pk=player_id)
     form = PlayerChangeForm(request.POST or None, request.FILES or None, instance=player)
@@ -170,6 +195,8 @@ def edit_player(request, team_id, player_id):
 
 # Routes to the team roster page with specified player deleted.
 def delete_player(request, team_id, player_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     player = Player.objects.get(pk=player_id)
     player.delete()
@@ -180,6 +207,8 @@ def delete_player(request, team_id, player_id):
 
 # Routes to the page for team captains to create a team roster.
 def create_event(request):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     form = EventForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
@@ -190,18 +219,24 @@ def create_event(request):
 
 # Routes to the page for players, he/she can view their team events.
 def team_event(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     events = Event.objects.filter(team=team_id).order_by('date')
     return render(request, 'website/team-event.html', { "events": events })
 
 # Routes to the page for players, he/she can view details for each team event.
 def event_details(request, team_id, event_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     event = get_object_or_404(Event, pk=event_id)
     return render(request, 'website/event-details.html', { "event": event })
 
 # Routes to the page for team captains to edit their profile.
 def edit_event(request, team_id, event_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     event = get_object_or_404(Event, pk=event_id)
     form = EventForm(request.POST or None, instance=event)
@@ -214,6 +249,8 @@ def edit_event(request, team_id, event_id):
 
 # Routes to the event page with specified event deleted.
 def delete_event(request, team_id, event_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
     team = get_object_or_404(Team, pk=team_id)
     event = Event.objects.get(pk=event_id)
     event.delete()
