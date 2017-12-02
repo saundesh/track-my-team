@@ -151,6 +151,7 @@ def create_roster(request, team_id):
         team = get_object_or_404(Team, pk=team_id)
         form = PlayerForm(request.POST or None, request.FILES or None)
         form.fields['team'].queryset = Team.objects.filter(user=request.user)
+        form.fields['team'].initial = team_id
         if request.method == 'POST':
             if form.is_valid():
                 player = form.save(commit=False)

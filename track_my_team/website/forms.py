@@ -38,7 +38,8 @@ class UploadTeamAvatarForm(forms.ModelForm):
         fields = ['avatar']
 
 class PlayerForm(forms.ModelForm):
-    # team = forms.ChoiceField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+    team = forms.ModelChoiceField(queryset=Team.objects, empty_label=None)
+    # team = forms.ModelChoiceField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Last Name'}))
     number = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'form-control form-control-sm','placeholder':'Number'}))
@@ -69,7 +70,8 @@ class PlayerChangeForm(forms.ModelForm):
         fields = ['team', 'first_name', 'last_name', 'number', 'email', 'phone_number', 'address', 'uin', 'usau_id']
 
 class EventForm(forms.ModelForm):
-    # team = forms.ChoiceField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+    # team = forms.ModelChoiceField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm'}))
+    team = forms.ModelChoiceField(queryset=Team.objects, empty_label=None)
     event_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Event Name'}))
     date = forms.DateField(widget=forms.SelectDateWidget(attrs={'class':'form-control form-control-sm'}), initial=timezone.now)
     time = forms.TimeField(input_formats=['%I:%M %p'], widget=forms.TimeInput(format='%I:%M %p', attrs={'class':'form-control form-control-sm','placeholder':'Time'}), initial=timezone.now)
