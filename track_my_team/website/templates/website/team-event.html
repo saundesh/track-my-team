@@ -7,10 +7,17 @@
     <h2>Team Events</h2>
     <div style="padding-top: 10px"></div>
     {% for event in events %}
-        {{ event.start_date }}<br>
-        {{ event.start_time }}<br>
-        <a href="/player/teams/{{ event.team.id }}/events/{{ event.id }}">{{ event.event_name }}</a><br><br>
-        <div style="padding-top: 5px"></div>
+        <a href="/player/teams/{{ event.team.id }}/events/{{ event.id }}" style="text-decoration: none">
+            <div class='col-md-6 jumbotron' style="background-color: transparent !important; border: #277bf7 solid 1px; display: inline-block; padding: 10px 10px 10px 10px">
+                <div class='date-container' style="width: 80px; height: 80px; background: #277bf7; border-radius: 5px; color:#ffffff; float:left; text-align: center"><br><h3>{{event.start_date.month}}/{{event.start_date.day}}</h3><br></div>
+                <div class='info-container' style="width: 230px; height: 80px; float:right; color: #000000">
+                    <h4>{{ event.event_name }}</h4>
+                    {{ event.start_time }} - {{ event.end_time }}<br>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}
+                </div>
+            </div>
+        </a>
+        <!-- <div style="padding-top: 5px"></div> -->
     {% endfor %}
     <br>
     <a class="btn btn-primary btn-sm" href="{% url 'website:create-event' team.id %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Event</a>
