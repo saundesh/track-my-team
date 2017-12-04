@@ -129,7 +129,7 @@ Redesign the event page so it looks refurnished. For each event, the event detai
 
 #### Part 5: Testing
 
-Expand the manual test plan for this week. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe. Write tests to see if the user registration and authentication work.
+Expand the manual test plan for this week. Write a test plan including screenshots and specific steps for a human tester to follow - what a tester should do and what he/she should observe.
 
 ### Grading Rubric
 
@@ -148,9 +148,9 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Presentation | 4 | 0-2 | Present the code clearly |
 | Requirement - Registration | 5 | 0-2.5 | 2 points: Fix previous signup/login form, new user should send to the database; 2.5 points: Make sure user isn't already in the database, salt and hash password |
 | Requirement - Authentication | 5 | 0-2.5 | 2 points: Login/logout user session; 2.5 points: Display data for a given user, all users should have different homepage |
-| Requirement - UI | 2.5 | 0-2.5 | 2.5 points: Display difference between user that is captain vs. player for a team, speicific buttons should only appear for captain, vise versa |
+| Requirement - UI | 2.5 | 0-2.5 | 2.5 points: Display difference between user that is captain vs. player for a team, specific buttons should only appear for captain, vise versa |
 | Requirement - Events | 7.5 | 0-2.5 | 1 point: Redesign event page; 2 points: Include Google Maps to event details; 2.5 points: Allow for recurrence when creating event |
-| Testing | 5 | 0-2.5 | 2 points: Add to manual test plan; 2.5 points: Test user accounts |
+| Testing | 5 | 0-2.5 | 2.5 points: Add to manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |
 
@@ -197,8 +197,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Overall Design | 5 | 0-2.5 | Have nice approaches and structures in overall |
 | Participation | 5 | 0-2.5 | Interact with the group 2 times (ask a question, make a comment, help answer a question, etc.) |
 | Presentation | 4 | 0-2 | Present the code clearly |
-| Requirement - Event Detail | 2.5 | 0-2.5 | 2.5 points: Include a notes section that a player should know about for a specific event and allow attachments (documents, photos, etc.) |
-| Requirement - UI | 2.5 | 0-2.5 | 2.5 points: Display difference between user that is captain vs. player for a team, speicific buttons should only appear for captain, vise versa |
+| Requirement - Users/Events | 5 | 0-2.5 | 2 points: Different user types; 2.5 points: Include a notes section and allow attachments (documents, photos, etc.) |
 | Requirement - Settings | 5 | 0-2.5 | 2 points: Allow for users to change account information such as display name, username, email, and password; 2.5 points: Ability to reset password if user forgets it |
 | Requirement - Announcements | 5 | 0-2.5 | 2 points: Home page will display announcements for important information; 2.5 points: Posts can be pinned, shown on the top before all other announcements |
 | Requirement - Search | 5 | 0-2.5 | 2 points: Ability to search for players and events; 2.5 point: Ability to search and filter |
