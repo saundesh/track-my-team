@@ -20,6 +20,17 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password']
 
+class UserChangeForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Last Name'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Username'}))
+    email = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Email'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','placeholder':'Password'}))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'email', 'password']
+
 class TeamForm(forms.ModelForm):
     team_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Team'}))
     sport = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Sport'}))

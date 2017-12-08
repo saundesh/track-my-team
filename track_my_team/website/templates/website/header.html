@@ -27,7 +27,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ user.username }}</a>
+                    <a class="nav-link" href="{% url 'website:settings' %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ user.username }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'website:logout-user' %}">Logout</a>

@@ -8,8 +8,10 @@ from django.shortcuts import render, get_object_or_404
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import UserChangeForm
 
-from .forms import UserForm, TeamForm, UploadTeamAvatarForm, PlayerForm, UploadPlayerAvatarForm, PlayerChangeForm, EventForm
+from .forms import UserForm, UserChangeForm, TeamForm, UploadTeamAvatarForm, PlayerForm, UploadPlayerAvatarForm, PlayerChangeForm, EventForm
 from .models import Team, Player, Event
 
 ### HOME PAGE
@@ -60,6 +62,34 @@ def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
     return render(request, 'website/login.html', { "form": form })
+
+# def change_password(request):
+#     if request.method == 'POST':
+#         form = PasswordChangeForm(request.user, request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             update_session_auth_hash(request, user)  # Important!
+#             messages.success(request, 'Your password was successfully updated!')
+#             return redirect('change_password')
+#         else:
+#             messages.error(request, 'Please correct the error below.')
+#     else:
+#         form = PasswordChangeForm(request.user)
+#     return render(request, 'accounts/change_password.html', { 'form': form })
+
+# Routes to the page for users to change their account information.
+def settings(request):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
+    else:
+        form = UserChangeForm(request.POST or None, instance=request.user)
+        if request.method == 'POST':
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.save()
+                return HttpResponseRedirect('/')
+                # return HttpResponseRedirect('/player/teams/' + team_id + '/events/' + event_id)
+        return render(request, 'website/settings.html', { "form": form })
 
 ### USER TYPE: CAPTAIN OR PLAYER
 
