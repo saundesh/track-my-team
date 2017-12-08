@@ -6,13 +6,19 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 
-from .forms import UserForm, UserChangeForm, TeamForm, UploadTeamAvatarForm, PlayerForm, UploadPlayerAvatarForm, PlayerChangeForm, EventForm
 from .models import Team, Player, Event
+from .forms import (
+    UserForm,
+    UserChangeForm,
+    TeamForm,
+    UploadTeamAvatarForm,
+    PlayerForm,
+    UploadPlayerAvatarForm,
+    PlayerChangeForm,
+    EventForm
+)
 
 ### HOME PAGE
 
@@ -63,20 +69,6 @@ def logout_user(request):
     form = UserForm(request.POST or None)
     return render(request, 'website/login.html', { "form": form })
 
-# def change_password(request):
-#     if request.method == 'POST':
-#         form = PasswordChangeForm(request.user, request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             update_session_auth_hash(request, user)  # Important!
-#             messages.success(request, 'Your password was successfully updated!')
-#             return redirect('change_password')
-#         else:
-#             messages.error(request, 'Please correct the error below.')
-#     else:
-#         form = PasswordChangeForm(request.user)
-#     return render(request, 'accounts/change_password.html', { 'form': form })
-
 # Routes to the page for users to change their account information.
 def settings(request):
     if not request.user.is_authenticated():
@@ -86,6 +78,9 @@ def settings(request):
         if request.method == 'POST':
             if form.is_valid():
                 user = form.save(commit=False)
+                password = form.cleaned_data['password']
+                user.set_password(password)
+                update_session_auth_hash(request, user)  # Important!
                 user.save()
                 return HttpResponseRedirect('/')
                 # return HttpResponseRedirect('/player/teams/' + team_id + '/events/' + event_id)
