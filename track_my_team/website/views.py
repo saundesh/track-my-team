@@ -59,7 +59,7 @@ def login_user(request):
                 login(request, user)
                 players = request.user.players.all()
                 ids = [p.team.id for p in players]
-                teams = Team.objects.filter(id__in=ids)
+                teams = Team.objects.filter(id__in=ids).order_by("team_name")
                 return render(request, 'website/team-list.html', { "teams": teams })
         else:
             return render(request, 'website/login.html', { 'error_message': 'Invalid Login' })
@@ -125,7 +125,7 @@ def team_list(request):
     else:
         players = request.user.players.all()
         ids = [p.team.id for p in players]
-        teams = Team.objects.filter(id__in=ids)
+        teams = Team.objects.filter(id__in=ids).order_by("team_name")
         return render(request, 'website/team-list.html', { "teams": teams })
 
 # Routes to the page for players to view each team profile.
@@ -134,7 +134,8 @@ def team_profile(request, team_id):
         return render(request, 'website/login.html')
     else:
         team = get_object_or_404(Team, pk=team_id)
-        return render(request, 'website/team-profile.html', { "team": team })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-profile.html', { "team": team, "captains": captains })
 
 # Routes to the page for team captains to upload a team logo.
 def upload_team_avatar(request, team_id):
@@ -173,7 +174,7 @@ def delete_team(request, team_id):
         team.delete()
         players = request.user.players.all()
         ids = [p.team.id for p in players]
-        teams = Team.objects.filter(id__in=ids)
+        teams = Team.objects.filter(id__in=ids).order_by("team_name")
         return render(request, 'website/team-list.html', { "teams": teams })
 
 ### PLAYER: CREATE, VIEW, EDIT, DELETE
@@ -188,7 +189,7 @@ def create_roster(request, team_id):
         players = request.user.players.all()
         players = request.user.players.all()
         ids = [p.team.id for p in players]
-        form.fields['team'].queryset = Team.objects.filter(id__in=ids)
+        form.fields['team'].queryset = Team.objects.filter(id__in=ids).order_by("team_name")
         form.fields['team'].initial = team_id
         if request.method == 'POST':
             if form.is_valid():
@@ -204,7 +205,8 @@ def team_roster(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         players = Player.objects.filter(team=team_id).order_by('number', 'first_name')
-        return render(request, 'website/team-roster.html', { "team": team, "roster": players })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-roster.html', { "team": team, "roster": players, "captains": captains })
 
 # Routes to the page for players to view each player profile.
 def player_profile(request, team_id, player_id):
@@ -213,7 +215,8 @@ def player_profile(request, team_id, player_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         player = get_object_or_404(Player, pk=player_id)
-        return render(request, 'website/player-profile.html', { "player": player })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/player-profile.html', { "player": player, "captains": captains })
 
 # Routes to the page for players to upload a profile picture.
 def upload_player_avatar(request, team_id, player_id):
@@ -267,7 +270,8 @@ def create_event(request, team_id):
         form = EventForm(request.POST or None)
         players = request.user.players.all()
         ids = [p.team.id for p in players]
-        form.fields['team'].queryset = Team.objects.filter(id__in=ids)
+        form.fields['team'].queryset = Team.objects.filter(id__in=ids).order_by("team_name")
+        form.fields['team'].initial = team_id
         if request.method == 'POST':
             if form.is_valid():
                 event = form.save(commit=False)
@@ -282,7 +286,8 @@ def team_event(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         events = Event.objects.filter(team=team_id).order_by('start_date', 'start_time')
-        return render(request, 'website/team-event.html', { "team": team, "events": events })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-event.html', { "team": team, "events": events, "captains": captains })
 
 # Routes to the page for players, he/she can view details for each team event.
 def event_details(request, team_id, event_id):
@@ -291,7 +296,8 @@ def event_details(request, team_id, event_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         event = get_object_or_404(Event, pk=event_id)
-        return render(request, 'website/event-details.html', { "event": event })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/event-details.html', { "event": event, "captains": captains })
 
 # Routes to the page for team captains to edit their profile.
 def edit_event(request, team_id, event_id):

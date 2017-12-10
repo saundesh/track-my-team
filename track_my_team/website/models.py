@@ -17,6 +17,10 @@ class Team(models.Model):
     def __str__(self):
         return self.team_name
 
+    def get_captains(self):
+        players = Player.objects.filter(team=self, role="CAPTAIN")
+        return players
+
 # Player model will store player profile information
 class Player(models.Model):
     user = models.ForeignKey(User, related_name='players', on_delete=models.CASCADE)

@@ -20,6 +20,10 @@
         <!-- <div style="padding-top: 5px"></div> -->
     {% endfor %}
     <br>
-    <a class="btn btn-primary btn-sm" href="{% url 'website:create-event' team.id %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Event</a>
+    {% for c in captains %}
+        {% if c.user == user %}
+            <a class="btn btn-primary btn-sm" href="{% url 'website:create-event' team.id %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Event</a>
+        {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}
