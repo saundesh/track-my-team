@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^login/$', views.login_user, name='login-user'),
     url(r'^logout/$', views.logout_user, name='logout-user'),
     url(r'^settings/$', views.settings, name='settings'),
+    url(r'^reset/$', views.reset, name='reset'),
     url(r'^captain/$', views.captain, name='captain'),
     url(r'^player/$', views.player, name='player'),
     url(r'^player/teams/$', views.team_list, name='team-list'),

@@ -7,14 +7,14 @@ from .models import Team, Player, Event
 # Register your models here.
 
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('team_name', 'sport', 'user')
+    list_display = ('team_name', 'sport')
 
 admin.site.register(Team, TeamAdmin)
 
 
 
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ('number', 'name', 'team')
+    list_display = ('user', 'number', 'name', 'role', 'team')
 
     def name(self, obj):
         return obj.first_name + ' ' + obj.last_name

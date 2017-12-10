@@ -57,7 +57,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                teams = Team.objects.filter(user=request.user)
+                teams = Team.objects.all()
                 return render(request, 'website/team-list.html', { "teams": teams })
         else:
             return render(request, 'website/login.html', { 'error_message': 'Invalid Login' })
@@ -83,8 +83,11 @@ def settings(request):
                 update_session_auth_hash(request, user)  # Important!
                 user.save()
                 return HttpResponseRedirect('/')
-                # return HttpResponseRedirect('/player/teams/' + team_id + '/events/' + event_id)
         return render(request, 'website/settings.html', { "form": form })
+
+# Routes to the page for users to reset their password.
+def reset(request):
+    return render(request, 'website/reset-password.html')
 
 ### USER TYPE: CAPTAIN OR PLAYER
 
@@ -107,8 +110,9 @@ def create_team(request):
         if request.method == 'POST':
             if form.is_valid():
                 team = form.save(commit=False)
-                team.user = request.user
                 team.save()
+                player = Player.objects.create(user=request.user, role="CAPTAIN", team=team, first_name=request.user.first_name, last_name=request.user.last_name)
+                player.save()
                 return HttpResponseRedirect('/player/teams/')
         return render(request, 'website/create-team.html', { "form": form })
 
@@ -117,7 +121,7 @@ def team_list(request):
     if not request.user.is_authenticated():
         return render(request, 'website/login.html')
     else:
-        teams = Team.objects.filter(user=request.user)
+        teams = Team.objects.all()
         return render(request, 'website/team-list.html', { "teams": teams })
 
 # Routes to the page for players to view each team profile.
@@ -163,7 +167,7 @@ def delete_team(request, team_id):
     else:
         team = Team.objects.get(pk=team_id)
         team.delete()
-        teams = Team.objects.filter(user=request.user)
+        teams = Team.objects.all()
         return render(request, 'website/team-list.html', { "teams": teams })
 
 ### PLAYER: CREATE, VIEW, EDIT, DELETE
@@ -175,7 +179,7 @@ def create_roster(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         form = PlayerForm(request.POST or None, request.FILES or None)
-        form.fields['team'].queryset = Team.objects.filter(user=request.user)
+        form.fields['team'].queryset = Team.objects.all()
         form.fields['team'].initial = team_id
         if request.method == 'POST':
             if form.is_valid():
@@ -252,7 +256,7 @@ def create_event(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         form = EventForm(request.POST or None)
-        form.fields['team'].queryset = Team.objects.filter(user=request.user)
+        form.fields['team'].queryset = Team.objects.all()
         if request.method == 'POST':
             if form.is_valid():
                 event = form.save(commit=False)

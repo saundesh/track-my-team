@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 
 # Team model will store team profile information
 class Team(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     team_name = models.CharField(max_length=64)
     sport = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
@@ -20,7 +19,13 @@ class Team(models.Model):
 
 # Player model will store player profile information
 class Player(models.Model):
+    user = models.ForeignKey(User, related_name='players', on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    PLAYER_ROLE = (
+        ("CAPTAIN", "Captain"),
+        ("PLAYER", "Player")
+    )
+    role = models.CharField(max_length=7, choices=PLAYER_ROLE, default="PLAYER")
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     number = models.IntegerField(null=True, blank=True)

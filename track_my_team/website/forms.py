@@ -56,7 +56,7 @@ class PlayerForm(forms.ModelForm):
     
     class Meta:
         model = Player
-        fields = ['team', 'first_name', 'last_name', 'number']
+        fields = ['team', 'role', 'user', 'first_name', 'last_name', 'number']
 
 class UploadPlayerAvatarForm(forms.ModelForm):
     avatar = forms.FileField(widget=forms.ClearableFileInput(attrs={'class':'form-control form-control-sm'}))
