@@ -57,7 +57,9 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                teams = Team.objects.all()
+                players = request.user.players.all()
+                ids = [p.team.id for p in players]
+                teams = Team.objects.filter(id__in=ids)
                 return render(request, 'website/team-list.html', { "teams": teams })
         else:
             return render(request, 'website/login.html', { 'error_message': 'Invalid Login' })
@@ -121,7 +123,9 @@ def team_list(request):
     if not request.user.is_authenticated():
         return render(request, 'website/login.html')
     else:
-        teams = Team.objects.all()
+        players = request.user.players.all()
+        ids = [p.team.id for p in players]
+        teams = Team.objects.filter(id__in=ids)
         return render(request, 'website/team-list.html', { "teams": teams })
 
 # Routes to the page for players to view each team profile.
@@ -167,7 +171,9 @@ def delete_team(request, team_id):
     else:
         team = Team.objects.get(pk=team_id)
         team.delete()
-        teams = Team.objects.all()
+        players = request.user.players.all()
+        ids = [p.team.id for p in players]
+        teams = Team.objects.filter(id__in=ids)
         return render(request, 'website/team-list.html', { "teams": teams })
 
 ### PLAYER: CREATE, VIEW, EDIT, DELETE
@@ -179,7 +185,10 @@ def create_roster(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         form = PlayerForm(request.POST or None, request.FILES or None)
-        form.fields['team'].queryset = Team.objects.all()
+        players = request.user.players.all()
+        players = request.user.players.all()
+        ids = [p.team.id for p in players]
+        form.fields['team'].queryset = Team.objects.filter(id__in=ids)
         form.fields['team'].initial = team_id
         if request.method == 'POST':
             if form.is_valid():
@@ -256,7 +265,9 @@ def create_event(request, team_id):
     else:
         team = get_object_or_404(Team, pk=team_id)
         form = EventForm(request.POST or None)
-        form.fields['team'].queryset = Team.objects.all()
+        players = request.user.players.all()
+        ids = [p.team.id for p in players]
+        form.fields['team'].queryset = Team.objects.filter(id__in=ids)
         if request.method == 'POST':
             if form.is_valid():
                 event = form.save(commit=False)

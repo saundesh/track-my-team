@@ -20,7 +20,7 @@ class Team(models.Model):
 # Player model will store player profile information
 class Player(models.Model):
     user = models.ForeignKey(User, related_name='players', on_delete=models.CASCADE)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, related_name='teams', on_delete=models.CASCADE)
     PLAYER_ROLE = (
         ("CAPTAIN", "Captain"),
         ("PLAYER", "Player")
