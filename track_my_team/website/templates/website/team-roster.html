@@ -11,11 +11,11 @@
     <h2>Roster</h2>
     <div class="container" style="padding-top: 10px">
         {% if roster.all %}
-            <div class="row" style="height: 275px; width: 690px; margin-left: auto; margin-right: auto">
+            <div class="row" style="height: 275px; width: 650px; margin-left: auto; margin-right: auto">
                 {% load tags %}
                 {% for player in roster %}
                     <div class="col">
-                        <a href="/teams/{{ player.team.id }}/roster/{{ player.id }}"><img src="{{ player.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /></a><br>
+                        <a href="/teams/{{ player.team.id }}/roster/{{ player.id }}"><img src="{{ player.avatar.url }}" class="rounded-circle" width=175 height=175 style="padding: 5px" /></a><br>
                         {{ player.first_name }} {{ player.last_name }}<br>
                         {% if player.number %}
                             #{{ player.number }}
@@ -24,19 +24,19 @@
                     </div>
                     {% if forloop.counter|divisibleby:"3" and not forloop.last %}
                         </div>
-                        <div class="row" style="height: 275px; width: 690px; margin-left: auto; margin-right: auto">
+                        <div class="row" style="height: 275px; width: 650px; margin-left: auto; margin-right: auto">
                     {% endif %}
                     {% if forloop.counter|modulo:3 == 1 and forloop.last %}
                         <div class="col">
-                            <img src="/media/white.jpeg" width=200 height=200 style="padding: 5px" /><br>
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
                         </div>
                         <div class="col">
-                            <img src="/media/white.jpeg" width=200 height=200 style="padding: 5px" /><br>
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
                         </div>
                     {% endif %}
                     {% if forloop.counter|modulo:3 == 2 and forloop.last %}
                         <div class="col">
-                            <img src="/media/white.jpeg" width=200 height=200 style="padding: 5px" /><br>
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
                         </div>
                     {% endif %}
                 {% endfor %}

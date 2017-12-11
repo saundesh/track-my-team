@@ -16,7 +16,7 @@
             <p><strong>{{ error|escape }}</strong></p>
         {% endfor %}
     {% endif %}
-    <div class="container text-center" style="width: 30%">
+    <div class="container text-center" style="width: 50%">
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}

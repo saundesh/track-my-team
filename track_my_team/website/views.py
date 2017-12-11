@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.db.models import Q
 
 from .models import Team, Player, Event, Announcement
 from .forms import (
@@ -123,10 +124,19 @@ def team_list(request):
     if not request.user.is_authenticated():
         return render(request, 'website/login.html')
     else:
-        players = request.user.players.all()
-        ids = [p.team.id for p in players]
+        user = request.user.players.all()
+        ids = [p.team.id for p in user]
         teams = Team.objects.filter(id__in=ids).order_by("team_name")
-        return render(request, 'website/team-list.html', { "teams": teams })
+        players = Player.objects.filter(team_id__in=teams)
+        events = Event.objects.filter(team_id__in=teams)
+        query = request.GET.get("q")
+        if query:
+            teams = teams.filter(Q(team_name__icontains=query) | Q(sport__icontains=query) | Q(state__icontains=query) | Q(city__icontains=query)).distinct()
+            players = players.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(number__icontains=query) | Q(phone_number__icontains=query)).distinct()
+            events = events.filter(Q(event_name__icontains=query) | Q(location__icontains=query)).distinct().order_by('start_date', 'start_time')
+            return render(request, 'website/team-list.html', { 'teams': teams, 'roster': players, 'events': events })
+        else:
+            return render(request, 'website/team-list.html', { "teams": teams })
 
 # Routes to the page for players to view each team profile.
 def team_profile(request, team_id):

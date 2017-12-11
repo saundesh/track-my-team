@@ -4,39 +4,100 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
+    <!-- USER'S TEAM LIST OR SEARCH: TEAMS -->
     <h2>Teams</h2>
     <div class="container" style="padding-top: 10px">
         {% if teams.all %}
-            <div class="row" style="height: 275px; width: 690px; margin-left: auto; margin-right: auto">
+            <div class="row" style="height: 275px; width: 650px; margin-left: auto; margin-right: auto">
                 {% load tags %}
                 {% for team in teams %}
                     <div class="col">
-                        <a href="/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /></a><br>
+                        <a href="/teams/{{ team.id }}"><img src="{{ team.avatar.url }}" class="rounded-circle" width=175 height=175 style="padding: 5px" /></a><br>
                         {{ team.team_name }}
                         <div style="padding-top: 5px"></div>
                     </div>
                     {% if forloop.counter|divisibleby:"3" and not forloop.last %}
                         </div>
-                        <div class="row" style="height: 275px; width: 690px; margin-left: auto; margin-right: auto">
+                        <div class="row" style="height: 275px; width: 650px; margin-left: auto; margin-right: auto">
                     {% endif %}
                     {% if forloop.counter|modulo:3 == 1 and forloop.last %}
                         <div class="col">
-                            <img src="/media/white.jpeg" width=200 height=200 style="padding: 5px" /><br>
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
                         </div>
                         <div class="col">
-                            <img src="/media/white.jpeg" width=200 height=200 style="padding: 5px" /><br>
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
                         </div>
                     {% endif %}
                     {% if forloop.counter|modulo:3 == 2 and forloop.last %}
                         <div class="col">
-                            <img src="/media/white.jpeg" width=200 height=200 style="padding: 5px" /><br>
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
                         </div>
                     {% endif %}
                 {% endfor %}
             </div>
+        {% else %}
+        <div style="padding-top: 10px"></div>
+        <a class="btn btn-primary btn-sm" href="{% url 'website:create-team' %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Team</a>
+        <div style="padding-top: 20px"></div><br>
         {% endif %}
     </div>
+
+    <!-- SEARCH: PLAYERS -->
     <br>
-    <a class="btn btn-primary btn-sm" href="{% url 'website:create-team' %}"><i class="fa fa-plus" aria-hidden="true"></i> Add Team</a>
+    {% if roster.all %}
+        <h2>Roster</h2>
+        <div class="container" style="padding-top: 10px">
+            <div class="row" style="height: 275px; width: 650px; margin-left: auto; margin-right: auto">
+                {% load tags %}
+                {% for player in roster %}
+                    <div class="col">
+                        <a href="/teams/{{ player.team.id }}/roster/{{ player.id }}"><img src="{{ player.avatar.url }}" class="rounded-circle" width=175 height=175 style="padding: 5px" /></a><br>
+                        {{ player.first_name }} {{ player.last_name }}<br>
+                        {% if player.number %}
+                            #{{ player.number }}
+                        {% endif %}
+                        <div style="padding-top: 5px"></div>
+                    </div>
+                    {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+                        </div>
+                        <div class="row" style="height: 275px; width: 650px; margin-left: auto; margin-right: auto">
+                    {% endif %}
+                    {% if forloop.counter|modulo:3 == 1 and forloop.last %}
+                        <div class="col">
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
+                        </div>
+                        <div class="col">
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
+                        </div>
+                    {% endif %}
+                    {% if forloop.counter|modulo:3 == 2 and forloop.last %}
+                        <div class="col">
+                            <img src="/media/white.jpeg" width=175 height=175 style="padding: 5px" /><br>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    <br>
+    {% endif %}
+
+    <!-- SEARCH: EVENTS -->
+    {% if events.all %}
+        <h2>Team Events</h2>
+        <div style="padding-top: 10px"></div>
+        {% for event in events %}
+            <a href="/teams/{{ event.team.id }}/events/{{ event.id }}" style="text-decoration: none">
+                <div class='col-md-6 jumbotron' style="background-color: transparent !important; border: #277bf7 solid 1px; display: inline-block; padding: 10px 10px 10px 10px">
+                    <div class='date-container' style="width: 80px; height: 80px; float: left; background: #277bf7; border-radius: 5px; color:#ffffff; text-align: center"><br><h3>{{event.start_date.month}}/{{event.start_date.day}}</h3><br></div>
+                    <div class='info-container' style="width: 230px; height: 80px; float: right; color: #000000">
+                        <h4>{{ event.event_name }}</h4>
+                        {{ event.start_time }} - {{ event.end_time }}<br>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}
+                    </div>
+                </div>
+            </a>
+            <!-- <div style="padding-top: 5px"></div> -->
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

@@ -200,7 +200,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Requirement - Users/Events | 5 | 0-2.5 | 2 points: Different user types; 2.5 points: Include a notes section and allow attachments (documents, photos, etc.) |
 | Requirement - Settings | 5 | 0-2.5 | 2 points: Allow for users to change account information such as display name, username, email, and password; 2.5 points: Ability to reset password if user forgets it |
 | Requirement - Announcements | 5 | 0-2.5 | 2 points: Home page will display announcements for important information; 2.5 points: Posts can be pinned, shown on the top before all other announcements |
-| Requirement - Search | 5 | 0-2.5 | 2 points: Ability to search for players and events; 2.5 point: Ability to search and filter |
+| Requirement - Search | 5 | 0-2.5 | 2 points: Ability to search for teams; 2.5 point: Ability to search for players and events in teams |
 | Testing | 5 | 0-2.5 | 2.5 points: Add to manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
 | **Total** | **63** | | |

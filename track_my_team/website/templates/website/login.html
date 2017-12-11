@@ -9,7 +9,7 @@
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <div class="container text-center" style="width: 30%">
+    <div class="container text-center" style="width: 50%">
         <form action="{% url 'website:login-user'%}" method="post">
             {% csrf_token %}
             <div class="form-group">
