@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Team, Player, Event
+from .models import Team, Player, Event, Announcement
 
 # Register your models here.
 
@@ -27,3 +27,9 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('start_date', 'event_name', 'team')
     
 admin.site.register(Event, EventAdmin)
+
+
+class AnnouncementAdmin(admin.ModelAdmin):
+    list_display = ('post_date', 'title', 'team')
+    
+admin.site.register(Announcement, AnnouncementAdmin)

@@ -37,6 +37,7 @@
         </a>
     </div>
 
+    <a class="btn btn-primary btn-sm" href="{% url 'website:team-announcement' team.id %}"><i class="fa fa-sticky-note-o" aria-hidden="true"></i> Announcements</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-roster' team.id %}"><i class="fa fa-users" aria-hidden="true"></i> Roster</a>
     <a class="btn btn-primary btn-sm" href="{% url 'website:team-events' team.id %}"><i class="fa fa-calendar-o" aria-hidden="true"></i> Events</a>
     {% for c in captains %}

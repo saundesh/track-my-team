@@ -1,39 +1,27 @@
 {% extends 'website/header.html' %}
 
-{% block title %} Create Roster {% endblock %}
+{% block title %} Upload Avatar {% endblock %}
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
     <div class="text-left">
         <h6><a href="{% url 'website:team-profile' team.id %}" style="color: #000000; text-decoration: none">{{ team.team_name }}</a>
-                >
-            <a href="{% url 'website:team-roster' team.id %}" style="color: #000000; text-decoration: none">Roster</a>
-                > Add Player</h6>
+            > Upload</h6>
     </div><br>
-    <h2>Add Player to Roster</h2>
+    <h2>Upload Avatar</h2>
     <div style="padding-top: 10px"></div>
-    {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-                <p><strong>{{ error|escape }}</strong></p>
-            {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-            <p><strong>{{ error|escape }}</strong></p>
-        {% endfor %}
-    {% endif %}
     <div class="container text-center" style="width: 30%">
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
                 <div class="form-group">
                     <div class="col-sm">
-                        <!-- {{ field.label_tag }} -->
+                        {{ field.label_tag }}
                         {{ field }}
                     </div>
                 </div>
             {% endfor %}
-            <button type="submit" class="btn btn-primary btn-sm">Add Player</button>
+            <button type="submit" class="btn btn-primary btn-sm">Save</button>
         </form>
     </div>
 </div>

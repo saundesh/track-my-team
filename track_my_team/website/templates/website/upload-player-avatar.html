@@ -4,6 +4,13 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
+    <div class="text-left">
+        <h6><a href="{% url 'website:team-profile' player.team.id %}" style="color: #000000; text-decoration: none">{{ player.team.team_name }}</a>
+                > 
+            <a href="{% url 'website:team-roster' player.team.id %}" style="color: #000000; text-decoration: none">Roster</a>
+                > 
+            <a href="/teams/{{ player.team.id }}/roster/{{ player.id }}" style="color: #000000; text-decoration: none">{{ player }}</a> > Upload</h6>
+    </div><br>
     <h2>Upload Avatar</h2>
     <div style="padding-top: 10px"></div>
     <div class="container text-center" style="width: 30%">

@@ -4,6 +4,10 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
+    <div class="text-left">
+        <h6><a href="{% url 'website:team-profile' team.id %}" style="color: #000000; text-decoration: none">{{ team.team_name }}</a>
+                > Roster</h6>
+    </div><br>
     <h2>Roster</h2>
     <div class="container" style="padding-top: 10px">
         {% if roster.all %}
@@ -11,7 +15,7 @@
                 {% load tags %}
                 {% for player in roster %}
                     <div class="col">
-                        <a href="/player/teams/{{ player.team.id }}/roster/{{ player.id }}"><img src="{{ player.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /></a><br>
+                        <a href="/teams/{{ player.team.id }}/roster/{{ player.id }}"><img src="{{ player.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /></a><br>
                         {{ player.first_name }} {{ player.last_name }}<br>
                         {% if player.number %}
                             #{{ player.number }}

@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 
-from .models import Team, Player, Event
+from .models import Team, Player, Event, Announcement
 from .forms import (
     UserForm,
     UserChangeForm,
@@ -17,7 +17,8 @@ from .forms import (
     PlayerForm,
     UploadPlayerAvatarForm,
     PlayerChangeForm,
-    EventForm
+    EventForm,
+    AnnouncementForm
 )
 
 ### HOME PAGE
@@ -91,16 +92,6 @@ def settings(request):
 def reset(request):
     return render(request, 'website/reset-password.html')
 
-### USER TYPE: CAPTAIN OR PLAYER
-
-# Routes to the page for team captains, he/she can create a team or team roster.
-def captain(request):
-    return render(request, 'website/captain.html')
-
-# Routes to the page for players, he/she can view their team information.
-def player(request):
-    return render(request, 'website/player.html')
-
 ### TEAM: CREATE, VIEW, EDIT, DELETE
 
 # Routes to the page for team captains to create a team profile.
@@ -115,7 +106,7 @@ def create_team(request):
                 team.save()
                 player = Player.objects.create(user=request.user, role="CAPTAIN", team=team, first_name=request.user.first_name, last_name=request.user.last_name)
                 player.save()
-                return HttpResponseRedirect('/player/teams/')
+                return HttpResponseRedirect('/teams/')
         return render(request, 'website/create-team.html', { "form": form })
 
 # Routes to the page for players to view a list of their teams.
@@ -148,8 +139,8 @@ def upload_team_avatar(request, team_id):
             if form.is_valid():
                 team = form.save(commit=False)
                 team.save()
-                return HttpResponseRedirect('/player/teams/' + team_id)
-        return render(request, 'website/upload-avatar.html', { "form": form })
+                return HttpResponseRedirect('/teams/' + team_id)
+        return render(request, 'website/upload-team-avatar.html', { "form": form, "team": team })
 
 # Routes to the page for team captains to edit the team profile.
 def edit_team(request, team_id):
@@ -162,8 +153,8 @@ def edit_team(request, team_id):
             if form.is_valid():
                 team = form.save(commit=False)
                 team.save()
-                return HttpResponseRedirect('/player/teams/' + team_id)
-        return render(request, 'website/edit-team.html', { "form": form })
+                return HttpResponseRedirect('/teams/' + team_id)
+        return render(request, 'website/edit-team.html', { "form": form, "team": team })
 
 # Routes to the list of teams page with specified team deleted.
 def delete_team(request, team_id):
@@ -175,7 +166,8 @@ def delete_team(request, team_id):
         players = request.user.players.all()
         ids = [p.team.id for p in players]
         teams = Team.objects.filter(id__in=ids).order_by("team_name")
-        return render(request, 'website/team-list.html', { "teams": teams })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-list.html', { "teams": teams, "captains": captains })
 
 ### PLAYER: CREATE, VIEW, EDIT, DELETE
 
@@ -195,8 +187,8 @@ def create_roster(request, team_id):
             if form.is_valid():
                 player = form.save(commit=False)
                 form.save()
-            return HttpResponseRedirect('/player/teams/' + request.POST['team'] + '/roster/')
-        return render(request, 'website/create-roster.html', { "form": form })
+            return HttpResponseRedirect('/teams/' + request.POST['team'] + '/roster/')
+        return render(request, 'website/create-roster.html', { "form": form, "team": team })
 
 # Routes to the page for players to view their team rosters.
 def team_roster(request, team_id):
@@ -230,8 +222,8 @@ def upload_player_avatar(request, team_id, player_id):
             if form.is_valid():
                 player = form.save(commit=False)
                 player.save()
-                return HttpResponseRedirect('/player/teams/' + team_id + '/roster/' + player_id)
-        return render(request, 'website/upload-avatar.html', { "form": form })
+                return HttpResponseRedirect('/teams/' + team_id + '/roster/' + player_id)
+        return render(request, 'website/upload-player-avatar.html', { "form": form, "player": player })
 
 # Routes to the page for players to edit their profile.
 def edit_player(request, team_id, player_id):
@@ -245,8 +237,8 @@ def edit_player(request, team_id, player_id):
             if form.is_valid():
                 player = form.save(commit=False)
                 player.save()
-                return HttpResponseRedirect('/player/teams/' + team_id + '/roster/' + player_id)
-        return render(request, 'website/edit-player.html', { "form": form })
+                return HttpResponseRedirect('/teams/' + team_id + '/roster/' + player_id)
+        return render(request, 'website/edit-player.html', { "form": form, "player": player })
 
 # Routes to the team roster page with specified player deleted.
 def delete_player(request, team_id, player_id):
@@ -257,7 +249,8 @@ def delete_player(request, team_id, player_id):
         player = Player.objects.get(pk=player_id)
         player.delete()
         players = Player.objects.filter(team=team_id).order_by('number')
-        return render(request, 'website/team-roster.html', { "team": team, "roster": players })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-roster.html', { "team": team, "roster": players, "captains": captains })
 
 ### EVENT: CREATE, VIEW, EDIT, DELETE
 
@@ -276,8 +269,8 @@ def create_event(request, team_id):
             if form.is_valid():
                 event = form.save(commit=False)
                 event.save()
-                return HttpResponseRedirect('/player/teams/' + request.POST['team'] + '/events/')
-        return render(request, 'website/create-event.html', { "form": form })
+                return HttpResponseRedirect('/teams/' + request.POST['team'] + '/events/')
+        return render(request, 'website/create-event.html', { "form": form, "team": team })
 
 # Routes to the page for players, he/she can view their team events.
 def team_event(request, team_id):
@@ -311,8 +304,8 @@ def edit_event(request, team_id, event_id):
             if form.is_valid():
                 event = form.save(commit=False)
                 event.save()
-                return HttpResponseRedirect('/player/teams/' + team_id + '/events/' + event_id)
-        return render(request, 'website/edit-event.html', { "form": form })
+                return HttpResponseRedirect('/teams/' + team_id + '/events/' + event_id)
+        return render(request, 'website/edit-event.html', { "form": form, "event": event })
 
 # Routes to the event page with specified event deleted.
 def delete_event(request, team_id, event_id):
@@ -323,4 +316,60 @@ def delete_event(request, team_id, event_id):
         event = Event.objects.get(pk=event_id)
         event.delete()
         events = Event.objects.filter(team=team_id).order_by('start_date', 'start_time')
-        return render(request, 'website/team-event.html', { "team": team, "events": events })
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-event.html', { "team": team, "events": events, "captains": captains })
+
+### ANNOUNCEMENT: CREATE, EDIT, DELETE
+
+def team_announcement(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
+    else:
+        team = get_object_or_404(Team, pk=team_id)
+        posts = Announcement.objects.filter(team=team_id).order_by('-post_date')
+        captains = Team.get_captains(get_object_or_404(Team, pk=team_id))
+        return render(request, 'website/team-announcement.html', { "team": team, "posts": posts, "captains": captains })
+
+# Routes to the page for team captains to create an announcement.
+def create_announcement(request, team_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
+    else:
+        team = get_object_or_404(Team, pk=team_id)
+        form = AnnouncementForm(request.POST or None)
+        players = request.user.players.all()
+        ids = [p.team.id for p in players]
+        form.fields['team'].queryset = Team.objects.filter(id__in=ids).order_by("team_name")
+        form.fields['team'].initial = team_id
+        if request.method == 'POST':
+            if form.is_valid():
+                announcement = form.save(commit=False)
+                announcement.save()
+                return HttpResponseRedirect('/teams/' + request.POST['team'] + '/announcements/')
+        return render(request, 'website/create-announcement.html', { "form": form, "team": team })
+
+# Routes to the page for team captains to edit their profile.
+def edit_announcement(request, team_id, announcement_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
+    else:
+        team = get_object_or_404(Team, pk=team_id)
+        post = get_object_or_404(Announcement, pk=announcement_id)
+        form = AnnouncementForm(request.POST or None, instance=post)
+        if request.method == 'POST':
+            if form.is_valid():
+                event = form.save(commit=False)
+                event.save()
+                return HttpResponseRedirect('/teams/' + team_id + '/announcements/')
+        return render(request, 'website/edit-announcement.html', { "form": form, "post": post })
+
+# Routes to the event page with specified event deleted.
+def delete_announcement(request, team_id, announcement_id):
+    if not request.user.is_authenticated():
+        return render(request, 'website/login.html')
+    else:
+        team = get_object_or_404(Team, pk=team_id)
+        post = Announcement.objects.get(pk=announcement_id)
+        post.delete()
+        posts = Announcement.objects.filter(team=team_id).order_by('post_date')
+        return render(request, 'website/team-announcement.html', { "team": team, "posts": posts })

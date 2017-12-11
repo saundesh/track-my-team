@@ -4,6 +4,12 @@
 
 {% block body %}
 <div class="container text-center" style="padding-top: 20px">
+    <div class="text-left">
+        <h6><a href="{% url 'website:team-profile' player.team.id %}" style="color: #000000; text-decoration: none">{{ player.team.team_name }}</a>
+                > 
+            <a href="{% url 'website:team-roster' player.team.id %}" style="color: #000000; text-decoration: none">Roster</a>
+                > {{ player }}</h6>
+    </div><br>
     <!-- <p>Player Profile</p> -->
     <img src="{{ player.avatar.url }}" class="rounded-circle" width=200 height=200 style="padding: 5px" /><br>
     <div style="padding-top: 10px"></div>

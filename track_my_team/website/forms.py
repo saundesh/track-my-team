@@ -7,7 +7,7 @@ import pytz, datetime
 import django.utils.timezone as timezone
 from django.utils.timezone import activate
 
-from .models import Team, Player, Event
+from .models import Team, Player, Event, Announcement
 
 class UserForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
@@ -52,7 +52,7 @@ class PlayerForm(forms.ModelForm):
     team = forms.ModelChoiceField(queryset=Team.objects, empty_label=None)
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Last Name'}))
-    number = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'form-control form-control-sm','placeholder':'Number'}))
+    number = forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control form-control-sm','placeholder':'Number'}))
     
     class Meta:
         model = Player
@@ -68,7 +68,6 @@ class UploadPlayerAvatarForm(forms.ModelForm):
 class PlayerChangeForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'First Name'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Last Name'}))
-    number = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'form-control form-control-sm','placeholder':'Number'}))
     email = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Email'}))
     phone_number = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'form-control form-control-sm','placeholder':'Phone Number'}))
     address = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Address'}))
@@ -77,7 +76,7 @@ class PlayerChangeForm(forms.ModelForm):
 
     class Meta:
         model = Player
-        fields = ['team', 'first_name', 'last_name', 'number', 'email', 'phone_number', 'address', 'uin', 'usau_id']
+        fields = ['team', 'first_name', 'last_name', 'email', 'phone_number', 'address', 'uin', 'usau_id']
 
 
 class EventForm(forms.ModelForm):
@@ -92,3 +91,13 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ['team', 'event_name', 'start_date', 'start_time', 'end_date', 'end_time', 'location']
+
+
+class AnnouncementForm(forms.ModelForm):
+    team = forms.ModelChoiceField(queryset=Team.objects, empty_label=None)
+    title = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Title'}))
+    post = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control form-control-sm','placeholder':'Write something...'}))
+    
+    class Meta:
+        model = Announcement
+        fields = ['team', 'title', 'post']

@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
+import datetime
+
 # Create your models here.
 
 # Team model will store team profile information
@@ -43,7 +45,7 @@ class Player(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-# Event model will store player profile information
+# Event model will store event detail information
 class Event(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     event_name = models.CharField(max_length=64)
@@ -55,3 +57,13 @@ class Event(models.Model):
 
     def __str__(self):
         return self.event_name
+
+# Announcements model will store all announcements
+class Announcement(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    title = models.CharField(max_length=64)
+    post_date = models.DateField(default=datetime.date.today)
+    post = models.TextField()
+
+    def __str__(self):
+        return self.title
