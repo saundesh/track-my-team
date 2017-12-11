@@ -31,6 +31,14 @@ class UserChangeForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password']
 
+class UserResetForm(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control form-control-sm','placeholder':'Password'}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
 class TeamForm(forms.ModelForm):
     team_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Team'}))
     sport = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Sport'}))

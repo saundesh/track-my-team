@@ -12,6 +12,7 @@ from .models import Team, Player, Event, Announcement
 from .forms import (
     UserForm,
     UserChangeForm,
+    UserResetForm,
     TeamForm,
     UploadTeamAvatarForm,
     PlayerForm,
@@ -90,7 +91,15 @@ def settings(request):
 
 # Routes to the page for users to reset their password.
 def reset(request):
-    return render(request, 'website/reset-password.html')
+    form = UserResetForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            user = form.save(commit=False)
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+            return HttpResponseRedirect('/login')
+    return render(request, 'website/reset-password.html', { "form": form })
 
 ### TEAM: CREATE, VIEW, EDIT, DELETE
 
