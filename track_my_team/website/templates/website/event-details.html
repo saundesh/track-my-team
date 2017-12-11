@@ -14,7 +14,14 @@
     <div style="padding-top: 10px"></div>
     <h3>{{ event }}</h3>
     {{ event.start_date }} {{ event.start_time }} - {{ event.end_date }} {{ event.end_time }} <br>
-    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }} <br>
+    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ event.location }}<br>
+    <div style="padding: 5px"></div>
+    {% if event.notes %}
+        <div class='col-md-8 jumbotron text-left' style="display: inline-block; padding: 10px 10px 10px 10px">
+            <h5>Notes:</h5>
+            {{ event.notes|linebreaks }}
+        </div>
+    {% endif %}
 
     <div style="padding-top: 100px"></div>
     

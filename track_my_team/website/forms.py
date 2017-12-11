@@ -87,10 +87,11 @@ class EventForm(forms.ModelForm):
     end_date = forms.DateField(widget=forms.SelectDateWidget(attrs={'class':'form-control form-control-sm'}), initial=timezone.now)
     end_time = forms.TimeField(input_formats=['%I:%M %p'], widget=forms.TimeInput(format='%I:%M %p', attrs={'class':'form-control form-control-sm','placeholder':'Time'}), initial=timezone.now)
     location = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control form-control-sm','placeholder':'Location'}))
+    notes = forms.CharField(required=False, widget=forms.Textarea(attrs={'class':'form-control form-control-sm','placeholder':'Add description'}))
     
     class Meta:
         model = Event
-        fields = ['team', 'event_name', 'start_date', 'start_time', 'end_date', 'end_time', 'location']
+        fields = ['team', 'event_name', 'start_date', 'start_time', 'end_date', 'end_time', 'location', 'notes']
 
 
 class AnnouncementForm(forms.ModelForm):

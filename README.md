@@ -220,6 +220,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 - https://docs.djangoproject.com/en/1.11/topics/auth/default/
 - https://docs.djangoproject.com/en/1.11/topics/db/queries/
 - https://docs.djangoproject.com/en/1.11/ref/validators/
+- https://docs.djangoproject.com/en/dev/ref/templates/builtins/
 
 ### Bootstrap
 - https://v4-alpha.getbootstrap.com/components/navbar/
