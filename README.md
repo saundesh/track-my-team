@@ -2,7 +2,7 @@
 
 Track My Team: A web app that will track all sports team events. This web app uses Django as the web framework alongside Python and Javascript.
 
-## Week 1
+<!-- ## Week 1
 
 ### Requirements
 
@@ -203,7 +203,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Requirement - Search | 5 | 0-2.5 | 2 points: Ability to search for teams; 2.5 point: Ability to search for players and events in teams |
 | Testing | 5 | 0-2.5 | 2.5 points: Add to manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
-| **Total** | **63** | | |
+| **Total** | **63** | | | -->
 
 
 ## Sources
