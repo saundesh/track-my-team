@@ -1,6 +1,6 @@
 # Track My Team!
 
-Track My Team: A web app that will track all sports team events. This web app uses Django as the web framework alongside Python and Javascript.
+A web app that will track and manage all sports team. This web app uses Django and Bootstrap.
 
 <!-- ## Week 1
 
@@ -203,7 +203,7 @@ Expand the manual test plan for this week. Write a test plan including screensho
 | Requirement - Search | 5 | 0-2.5 | 2 points: Ability to search for teams; 2.5 point: Ability to search for players and events in teams |
 | Testing | 5 | 0-2.5 | 2.5 points: Add to manual test plan |
 | Schedule | 2 | 0-1 | Revised final project schedule if necessary |
-| **Total** | **63** | | | -->
+| **Total** | **63** | | |
 
 
 ## Sources
@@ -230,4 +230,4 @@ Expand the manual test plan for this week. Write a test plan including screensho
 ### Examples
 - https://github.com/buckyroberts/Viberr/
 - https://www.youtube.com/watch?v=qgGIqRFvFFk&list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK
-- https://www.youtube.com/watch?v=Fc2O3_2kax8&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj
+- https://www.youtube.com/watch?v=Fc2O3_2kax8&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj -->
